@@ -1,0 +1,77 @@
+format = """
+[](#96cdfb)$username[](fg:#96cdfb bg:#f5c2e7)\
+$directory\
+$git_branch\
+$git_status\
+$haskell\
+$java\
+$nodejs\
+$rust\
+[ ](bg:#f5c2e7)\
+[](fg:#f5c2e7)
+$time[» ](bold green)
+"""
+
+# Disable the blank line at the start of the prompt
+# add_newline = false
+
+# You can also replace your username with a neat symbol like  to save some space
+[username]
+show_always = true
+style_user = "fg:#1e1e2e bg:#96cdfb"
+style_root = "fg:#1e1e2e bg:#96cdfb"
+format = '[ $user ]($style)'
+
+[directory]
+style = "fg:#1e1e2e bg:#f5c2e7"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+# Here is how you can shorten some long paths by text replacement
+# similar to mapped_locations in Oh My Posh:
+[directory.substitutions]
+"Documents" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+# Keep in mind that the order matters. For example:
+# "Important Documents" = "  "
+# will not be replaced, because "Documents" was already substituted before.
+# So either put "Important Documents" before "Documents" or use the substituted version:
+# "Important  " = "  "
+
+[git_branch]
+symbol = 'שׂ '
+style = "fg:#1e1e2e bg:#f5c2e7"
+format = '[[ • ](fg:#1e1e2e bg:#f5c2e7) $symbol $branch ]($style)'
+
+[git_status]
+style = "fg:#1e1e2e bg:#f5c2e7"
+format = '[($all_status$ahead_behind )]($style)'
+
+[haskell]
+symbol = " "
+style = "fg:#1e1e2e bg:#f5c2e7"
+format = '[[ • ](fg:#1e1e2e bg:#f5c2e7) $symbol ($version) ]($style)'
+
+[java]
+symbol = " "
+style = "fg:#1e1e2e bg:#f5c2e7"
+format = '[[ • ](fg:#1e1e2e bg:#f5c2e7) $symbol ($version) ]($style)'
+
+[nodejs]
+symbol = ""
+style = "fg:#1e1e2e bg:#f5c2e7"
+format = '[[ • ](fg:#1e1e2e bg:#f5c2e7) $symbol ($version) ]($style)'
+
+[rust]
+symbol = ""
+style = "fg:#1e1e2e bg:#f5c2e7"
+format = '[[ • ](fg:#1e1e2e bg:#f5c2e7) $symbol ($version) ]($style)'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = ""
+format = '[ [⚡](fg:#fae3b0)$time ]($style)'

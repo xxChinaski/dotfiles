@@ -1,0 +1,16 @@
+require "dt.options"
+require "dt.keymaps"
+require "dt.plugins"
+require "dt.colors"
+require "dt.cmp"
+require "dt.lsp"
+require "dt.telescope"
+require "dt.treesitter"
+require "dt.autopairs"
+require "dt.comment"
+require "dt.lualine"
+require "dt.toggleterm"
+require "dt.alpha"
+require "dt.nvim-tree"
+
+
