@@ -120,7 +120,7 @@ ins_left {
 ins_left {
   -- mode component
   function()
-    return ' '
+    return ' '
   end,
   color = modeColor,
   padding = { right = 1 },

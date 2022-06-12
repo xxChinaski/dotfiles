@@ -10,12 +10,12 @@ configuration{
     location: 0;
     disable-history: false;
     hide-scrollbar: true;
-    display-drun: "   Apps   ";
-    display-run: "   Run   ";
-    sidebar-mode: true;
+    //display-drun: "   Apps   ";
+    //display-run: "   Run   ";
+    //sidebar-mode: true;
 }
 
-@theme "catppuccin"
+//@theme "catppuccin"
 
 element-text, element-icon , mode-switcher {
     background-color: @bg-zero;
@@ -112,3 +112,5 @@ button selected {
   background-color: @bg-zero;
   text-color: @blue;
 }
+//@theme "/home/dt/.local/share/rofi/themes/cat2.rasi"
+@theme "/home/dt/.local/share/rofi/themes/spotlight.rasi"

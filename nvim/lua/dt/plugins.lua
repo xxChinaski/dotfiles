@@ -91,6 +91,15 @@ return packer.startup(function(use)
   -- Markdown VimWiki
   use "vimwiki/vimwiki"
 
+  -- Easymotion
+  use {
+    'phaazon/hop.nvim',
+    branch = 'v1', -- optional but strongly recommended
+    config = function()
+      -- you can configure Hop the way you like here; see :h hop-config
+      require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+    end
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

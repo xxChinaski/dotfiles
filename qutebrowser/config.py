@@ -172,7 +172,7 @@ c.tabs.indicator.width = 1
 # Page to open if :open -t/-b/-w is used without URL. Use `about:blank`
 # for a blank page.
 # Type: FuzzyUrl
-c.url.default_page = 'https://startpage.com/'
+c.url.default_page = '~/Develop/startpage/index.html'
 
 # Search engines which can be used via the address bar.  Maps a search
 # engine name (such as `DEFAULT`, or `ddg`) to a URL with a `{}`
@@ -193,11 +193,11 @@ c.url.default_page = 'https://startpage.com/'
 # the search engine name to the search term, e.g. `:open google
 # qutebrowser`.
 # Type: Dict
-c.url.searchengines = {'DEFAULT': 'https://startpage.com/?q={}'}
+c.url.searchengines = {'DEFAULT': 'https://startpage.com/sp/search?q={}'}
 
 # Page(s) to open at the start.
 # Type: List of FuzzyUrl, or FuzzyUrl
-c.url.start_pages = 'https://startpage.com'
+c.url.start_pages = '~/Develop/startpage/index.html'
 
 # Text color of the completion widget. May be a single color to use for
 # all columns or a list of three colors, one for each column.

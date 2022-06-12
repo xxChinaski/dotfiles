@@ -12,5 +12,6 @@ require "dt.lualine"
 require "dt.toggleterm"
 require "dt.alpha"
 require "dt.nvim-tree"
+require "dt.hop"
 
 
