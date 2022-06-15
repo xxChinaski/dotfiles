@@ -10,7 +10,7 @@ configuration{
     location: 0;
     disable-history: false;
     hide-scrollbar: true;
-    //display-drun: "   Apps   ";
+    display-drun: "   Apps   ";
     //display-run: "   Run   ";
     //sidebar-mode: true;
 }
@@ -46,7 +46,7 @@ inputbar {
 prompt {
     background-color: @blue;
     padding: 6px;
-    text-color: @bg-ft;
+    text-color: #181825;
     border-radius: 3px;
     margin: 20px 0px 0px 20px;
 }
@@ -113,4 +113,6 @@ button selected {
   text-color: @blue;
 }
 //@theme "/home/dt/.local/share/rofi/themes/cat2.rasi"
-@theme "/home/dt/.local/share/rofi/themes/spotlight.rasi"
+@theme "/home/dt/.config/rofi/spotlight.rasi"
+//@theme "/home/dt/.local/share/rofi/themes/spotlight.rasi"
+//@theme "/home/dt/.local/share/rofi/themes/tokyonight.rasi"
