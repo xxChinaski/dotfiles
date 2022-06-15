@@ -46,23 +46,18 @@ mpv =  "mpv"
 picom = terminal + " -e picom --experimental-backends --daemon"
 
 keys = [
-    # A list of available commands that can be bound to keys can be found
-    # at https://docs.qtile.org/en/latest/manual/config/lazy.html
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
     Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
-    # Move windows between left/right columns or move up/down in current stack.
-    # Moving out of range in Columns layout will create new column.
+
     Key([mod, "shift"], "h", lazy.layout.swap_left(), desc="Move window to the left"),
     Key([mod, "shift"], "l", lazy.layout.swap_right(), desc="Move window to the right"),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     Key([mod, "shift"], "space", lazy.layout.flip(), desc="Flip layout"),
-    # Grow windows. If current window is on the edge of screen and direction
-    # will be to screen edge - window would shrink.
 
     # Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
     # Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
@@ -87,25 +82,25 @@ keys = [
         desc="Toggle between split and unsplit sides of stack",
     ),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawn('rofi -show drun')), # run Rofi
-    Key([mod], "e", lazy.spawn(file_manager)), # run VIFM
     Key([mod, "shift"], "e", lazy.spawn(gui_file_manager)), # run PCmanFM
+    Key([mod], "e", lazy.spawn(file_manager)), # run VIFM
+    # Key([mod], "r", lazy.spawn('rofi -show drun')), # run Rofi
     Key([mod], "m", lazy.spawn(cmus)), # run cmus music player
     Key([mod], "b", lazy.spawn(browser)), # run FIREFOX 
     Key([mod], "p", lazy.spawn(mpv)), # run mpv video player  
     Key([mod], "Print", lazy.spawn('scrot "%Y-%m-%d_$wx$h.png" -e "optipng $f"')), # run FIREFOX 
 
     # KeyChords ==========================
-    # KeyChord([mod], 'r', [
-    #              Key([], 'e', lazy.spawn('rofi -show drun')),
-    #          ]),
+    KeyChord([mod], 'r', [
+                 Key([], 'e', lazy.spawn('rofi -show drun')),
+                 Key([], 'c', lazy.spawn('rofiedit')),
+                 Key([], 'q', lazy.spawn('/usr/local/bin/powermenu')),
+             ]),
 ]
-
 
 cats = [
     ["#F5E0DC", "#F5E0DC"],
@@ -139,24 +134,46 @@ thm_blue = cats[10]
 thm_green = cats[8]
 bgTrans = "#00000000" 
 
+# groups = [Group(" ", layout='MonadTall'),
+#           Group(" ", layout='MonadTall'),
+#           Group(" ", layout='MonadTall'),
+#           Group(" ", layout='MonadTall'),
+#           Group("VBOX", layout='MonadTall'),
+#           Group("CHAT", layout='MonadTall'),
+#           Group("MUS", layout='MonadTall'),
+#           Group("VID", layout='MonadTall'),
+#           Group("GFX", layout='MonadTall'),
+#           Group(" ", layout='MonadTall')
+#         ]
+#
+# from libqtile.dgroups import simple_key_binder
+# dgroups_key_binder = simple_key_binder("mod4")
 
-groups = [Group(" ", layout='MonadTall'),
-          Group(" ", layout='MonadTall'),
-          Group(" ", layout='MonadTall'),
-          Group(" ", layout='MonadTall'),
-          Group("VBOX", layout='MonadTall'),
-          Group("CHAT", layout='MonadTall'),
-          Group("MUS", layout='MonadTall'),
-          Group("VID", layout='MonadTall'),
-          Group("GFX", layout='MonadTall'),
-          Group(" ", layout='MonadTall')
+groups = [Group(i) for i in "1234567890"]
+
+for i in groups:
+    keys.extend(
+        [
+            # mod1 + letter of group = switch to group
+            Key(
+                [mod],
+                i.name,
+                lazy.group[i.name].toscreen(),
+                desc="Switch to group {}".format(i.name),
+            ),
+            # mod1 + shift + letter of group = switch to & move focused window to group
+            Key(
+                [mod, "shift"],
+                i.name,
+                lazy.window.togroup(i.name, switch_group=True),
+                desc="Switch to & move focused window to group {}".format(i.name),
+            ),
+            # Or, use below if you prefer not to switch to that group.
+            # # mod1 + shift + letter of group = move focused window to group
+            # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
+            #     desc="move focused window to group {}".format(i.name)),
         ]
-
-# Allow MODKEY+[0 through 9] to bind to groups, see https://docs.qtile.org/en/stable/manual/config/groups.html
-# MOD4 + index Number : Switch to Group[index]
-# MOD4 + shift + index Number : Send active window to another Group
-from libqtile.dgroups import simple_key_binder
-dgroups_key_binder = simple_key_binder("mod4")
+    )
 
 layout_theme = {
         "border_width": 1,
@@ -189,10 +206,9 @@ layouts = [
     # layout.Zoomy(),
 ]
 
-
 #"#0b151e", "#0b151e"],
 colors = [
-        # ["#00000000", "#00000000"],
+          # ["#00000000", "#00000000"],
           # ["#0b151e", "#0b151e"],
           ["#0b151ea6", "#0b151ea6"],
           ["#1c1f24", "#1c1f24"],
@@ -206,7 +222,6 @@ colors = [
           ["#c678dd", "#c678dd"],
           ["#46d9ff", "#46d9ff"],
           ["#a9a1e1", "#a9a1e1"]]
-
 
 widget_defaults = dict(
     font="UbuntuMono Nerd Font",
@@ -329,19 +344,14 @@ floating_layout = layout.Floating(
         Match(title="pinentry"),  # GPG key password entry
     ],
     border_width = 0,
-
 )
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
 
-# If things like steam games want to auto-minimize themselves when losing
-# focus, should we respect this or not?
 auto_minimize = True
 
-# When using the Wayland backend, this can be used to configure input devices.
 wl_input_rules = None
-
 
 @hook.subscribe.startup
 def autostart():
