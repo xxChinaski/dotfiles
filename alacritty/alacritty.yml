@@ -26,9 +26,12 @@ env:
 window:
   # Window padding (changes require restart)
   #
+  # padding:
+  #   x: 5 
+  #   y: 5 
   padding:
-    x: 10 
-    y: 10 
+    x: 10
+    y: 10
   # Background opacity
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
@@ -37,7 +40,7 @@ window:
   opacity: 1
   opacity: .65 
   opacity: .93  #NOTE!
-  opacity: .75 
+  opacity: .75  #NOTE CURRENT !!!!!!!
 
   # Window dimensions (changes require restart)
   #

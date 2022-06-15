@@ -76,6 +76,7 @@ return packer.startup(function(use)
 
   use "neovim/nvim-lspconfig" --enable LSP 
   use "williamboman/nvim-lsp-installer" -- simple to use language server isntaller
+  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
   -- -- Telescope
   use "nvim-telescope/telescope.nvim"
@@ -90,6 +91,9 @@ return packer.startup(function(use)
   use "JoosepAlviste/nvim-ts-context-commentstring"
   -- Markdown VimWiki
   use "vimwiki/vimwiki"
+
+  -- prettier
+  -- use 'sbdchd/neoformat'
 
   -- Easymotion
   use {

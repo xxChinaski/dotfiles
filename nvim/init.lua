@@ -13,5 +13,6 @@ require "dt.toggleterm"
 require "dt.alpha"
 require "dt.nvim-tree"
 require "dt.hop"
+require "dt.null-ls"
 
 
