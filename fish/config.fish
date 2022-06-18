@@ -12,6 +12,11 @@ if status is-interactive
     alias mt="neomutt"
     alias ms="mdbook serve -p 8000"
 
+    alias gs="git status"
+    alias gad="git add ."
+    alias gc="git commit -m" 
+    alias gp="git push" 
+
     # bash ~/.config/fish/crunch.sh
     bash ~/.config/fish/waves.sh
     # pfetch
