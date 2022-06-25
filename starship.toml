@@ -1,14 +1,14 @@
 format = """
-[](#96cdfb)$username[](fg:#96cdfb bg:#f5c2e7)\
+$username\
 $directory\
 $git_branch\
 $git_status\
 $haskell\
+$lua\
+$python\
 $java\
 $nodejs\
-$rust\
-[ ](bg:#f5c2e7)\
-[](fg:#f5c2e7)
+$rust
 $time[» ](bold green)
 """
 
@@ -18,13 +18,14 @@ $time[» ](bold green)
 # You can also replace your username with a neat symbol like  to save some space
 [username]
 show_always = true
-style_user = "fg:#1e1e2e bg:#96cdfb"
-style_root = "fg:#1e1e2e bg:#96cdfb"
-format = '[ $user ]($style)'
+# style_user = "fg:#96cdfb"
+style_user = "fg:#ccb7f2"
+style_root = "fg:#ccb7f2"
+format = '[ $user@linux:]( $style)'
 
 [directory]
-style = "fg:#1e1e2e bg:#f5c2e7"
-format = "[ $path ]($style)"
+style = "fg:#96cdfb"
+format = "[ $path ]($style bold)"
 truncation_length = 3
 truncation_symbol = "…/"
 
@@ -43,32 +44,42 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = 'שׂ '
-style = "fg:#1e1e2e bg:#f5c2e7"
-format = '[[ • ](fg:#1e1e2e bg:#f5c2e7) $symbol $branch ]($style)'
+style = "fg:#ddb6f2"
+format = '[[ on](fg:#988ba2) $symbol$branch](bold $style)'
 
 [git_status]
-style = "fg:#1e1e2e bg:#f5c2e7"
-format = '[($all_status$ahead_behind )]($style)'
+style = "fg:#f38ba8"
+format = '[($all_status$ahead_behind)]($style)'
 
 [haskell]
 symbol = " "
-style = "fg:#1e1e2e bg:#f5c2e7"
-format = '[[ • ](fg:#1e1e2e bg:#f5c2e7) $symbol ($version) ]($style)'
+style = "fg:#96cdfb"
+format = '[[ via ](fg:#988ba2)$symbol($version) ](bold $style)'
+
+[lua]
+symbol = " "
+style = "fg:#96cdfb"
+format = '[[ via ](fg:#988ba2)$symbol($version) ](bold $style)'
+
+[python]
+symbol = " "
+style = "fg:#abe9b3"
+format = '[[ via ](fg:#988ba2)$symbol($version) ](bold $style)'
 
 [java]
 symbol = " "
-style = "fg:#1e1e2e bg:#f5c2e7"
-format = '[[ • ](fg:#1e1e2e bg:#f5c2e7) $symbol ($version) ]($style)'
+style = "fg:#f28fad"
+format = '[[ via ](fg:#988ba2)$symbol($version) ](bold $style)'
 
 [nodejs]
-symbol = ""
-style = "fg:#1e1e2e bg:#f5c2e7"
-format = '[[ • ](fg:#1e1e2e bg:#f5c2e7) $symbol ($version) ]($style)'
+symbol = " "
+style = "fg:#89dceb"
+format = '[[ via ](fg:#988ba2)$symbol($version) ](bold $style)'
 
 [rust]
 symbol = ""
-style = "fg:#1e1e2e bg:#f5c2e7"
-format = '[[ • ](fg:#1e1e2e bg:#f5c2e7) $symbol ($version) ]($style)'
+style = "fg:#f28fad"
+format = '[[ via ](fg:#988ba2)$symbol($version) ](bold $style)'
 
 [time]
 disabled = false

@@ -52,24 +52,41 @@ keys = [
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
     Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
+     #==========================my bsp============================================
 
-    Key([mod, "shift"], "h", lazy.layout.swap_left(), desc="Move window to the left"),
-    Key([mod, "shift"], "l", lazy.layout.swap_right(), desc="Move window to the right"),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
-    Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
-    Key([mod, "shift"], "space", lazy.layout.flip(), desc="Flip layout"),
+    Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
+    Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
+    Key([mod, "shift"], "h", lazy.layout.shuffle_left()),
+    Key([mod, "shift"], "l", lazy.layout.shuffle_right()),
+    Key([mod, "mod1"], "j", lazy.layout.flip_down()),
+    Key([mod, "mod1"], "k", lazy.layout.flip_up()),
+    Key([mod, "mod1"], "h", lazy.layout.flip_left()),
+    Key([mod, "mod1"], "l", lazy.layout.flip_right()),
+    Key([mod, "control"], "j", lazy.layout.grow_down()),
+    Key([mod, "control"], "k", lazy.layout.grow_up()),
+    Key([mod, "control"], "h", lazy.layout.grow_left()),
+    Key([mod, "control"], "l", lazy.layout.grow_right()),
+    Key([mod, "shift"], "n", lazy.layout.normalize()),
 
-    # Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
-    # Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
-    # Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
-    # Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
-    # Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
-
-    Key([mod, "control"], "h", lazy.layout.grow(), desc="Grow window to the left"),
-    Key([mod, "control"], "l", lazy.layout.shrink(), desc="Grow window to the right"),
-    Key([mod, "control"], "j", lazy.layout.normalize(), desc="Grow window down"),
-    Key([mod, "control"], "k", lazy.layout.maximize(), desc="Grow window up"),
-    Key([mod], "f", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen for pane in focus"),
+    # #==========================my qtile ============================================
+    # Key([mod, "shift"], "h", lazy.layout.swap_left(), desc="Move window to the left"),
+    # Key([mod, "shift"], "l", lazy.layout.swap_right(), desc="Move window to the right"),
+    # Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
+    # Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
+    # Key([mod, "shift"], "space", lazy.layout.flip(), desc="Flip layout"),
+    #
+    # # Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
+    # # Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
+    # # Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
+    # # Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
+    # # Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    #
+    # Key([mod, "control"], "h", lazy.layout.grow(), desc="Grow window to the left"),
+    # Key([mod, "control"], "l", lazy.layout.shrink(), desc="Grow window to the right"),
+    # Key([mod, "control"], "j", lazy.layout.normalize(), desc="Grow window down"),
+    # Key([mod, "control"], "k", lazy.layout.maximize(), desc="Grow window up"),
+    # #------------------------------------------------------------------------------
+    Key([mod], "F1", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen for pane in focus"),
 
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
@@ -81,25 +98,25 @@ keys = [
         lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack",
     ),
-    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+    # Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod, "shift"], "e", lazy.spawn(gui_file_manager)), # run PCmanFM
-    Key([mod], "e", lazy.spawn(file_manager)), # run VIFM
+    # Key([mod, "shift"], "e", lazy.spawn(gui_file_manager)), # run PCmanFM
+    # Key([mod], "e", lazy.spawn(file_manager)), # run VIFM
     # Key([mod], "r", lazy.spawn('rofi -show drun')), # run Rofi
-    Key([mod], "m", lazy.spawn(cmus)), # run cmus music player
-    Key([mod], "b", lazy.spawn(browser)), # run FIREFOX 
-    Key([mod], "p", lazy.spawn(mpv)), # run mpv video player  
-    Key([mod], "Print", lazy.spawn('scrot "%Y-%m-%d_$wx$h.png" -e "optipng $f"')), # run FIREFOX 
+    # Key([mod], "m", lazy.spawn(cmus)), # run cmus music player
+    # Key([mod], "b", lazy.spawn(browser)), # run FIREFOX 
+    # Key([mod], "p", lazy.spawn(mpv)), # run mpv video player  
+    # Key([mod], "Print", lazy.spawn('scrot "%Y-%m-%d_$wx$h.png" -e "optipng $f"')), # run FIREFOX 
 
     # KeyChords ==========================
-    KeyChord([mod], 'r', [
-                 Key([], 'e', lazy.spawn('rofi -show drun')),
-                 Key([], 'c', lazy.spawn('rofiedit')),
-                 Key([], 'q', lazy.spawn('/usr/local/bin/powermenu')),
-             ]),
+    # KeyChord([mod], 'r', [
+    #              Key([], 'r', lazy.spawn('rofi -show drun')), # run app
+    #              Key([], 'e', lazy.spawn('rofiedit')), # edit confi:s
+    #              Key([], 'q', lazy.spawn('powermenu')), # power mend
+    #          ]),
 ]
 
 cats = [
@@ -176,21 +193,26 @@ for i in groups:
     )
 
 layout_theme = {
-        "border_width": 1,
+        "border_width": 2,
         "single_border_width": 0,
         "margin": 10, 
-        "border_focus": thm_pink,
+        # "border_focus": "#F5E0DC",
+        "border_focus": "#a6adc8",
         "border_normal": bgColor,
         }
 
 layouts = [
-    layout.MonadTall(
-        **layout_theme,
-        ),
+    # layout.MonadTall(
+    #     **layout_theme,
+    #     ),
     # layout.Max(**layout_theme),
-    layout.MonadThreeCol(**layout_theme),
+    # layout.Spiral(**layout_theme, ratio=0.5),
+    # layout.MonadThreeCol(**layout_theme),
+    layout.Bsp(**layout_theme,
+               fair=False,
+               grow_amount=2,
+               ),
     layout.Stack(num_stacks=1, margin=10, border_focus="#1E1E2E"),
-    # layout.Bsp(**layout_theme),
     # layout.Slice(**layout_theme),
     # layout.Tile(**layout_theme),
     # Try more layouts by unleashing below layouts.
@@ -315,7 +337,7 @@ screens = [
          #     background="#181825",
          #     # margin=[10, 10, 0, 10],
          # ),
-        wallpaper='~/Downloads/wallpapers/alien.jpg',
+        wallpaper='~/Downloads/wallpapers/brett-ritchie-S0c_wsCmlXE-unsplash.jpg',
         wallpaper_mode='fill',
     ),
 ]

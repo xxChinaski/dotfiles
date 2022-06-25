@@ -53,6 +53,7 @@ return packer.startup(function(use)
   use "akinsho/toggleterm.nvim" --terminal overlay
   use "kyazdani42/nvim-web-devicons"
   use "kyazdani42/nvim-tree.lua"
+  use 'norcalli/nvim-colorizer.lua'
   -- use 'ap/vim-css-color'
   -- Catppuccin colorscheme
   use({

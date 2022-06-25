@@ -14,5 +14,6 @@ require "dt.alpha"
 require "dt.nvim-tree"
 require "dt.hop"
 require "dt.null-ls"
+require "dt.coloraizer"
 
 
