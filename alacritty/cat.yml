@@ -1,10 +1,5 @@
 color_schemes:
-
-
-
-  latte: &latte
-
-    # Default colors
+  latte: &latte # Default colors
     primary:
       background: '#eff1f5' # base
       foreground: '#4c4f69' # text
@@ -48,42 +43,38 @@ color_schemes:
 
     # Normal colors
     normal:
-      black:   '#4C4F69' # text
-      red:     '#D20F39' # red
-      green:   '#40A02B' # green
-      yellow:  '#DF8E1D' # yellow
-      blue:    '#1E66F5' # blue
+      black: '#4C4F69' # text
+      red: '#D20F39' # red
+      green: '#40A02B' # green
+      yellow: '#DF8E1D' # yellow
+      blue: '#1E66F5' # blue
       magenta: '#EA76CB' # pink
-      cyan:    '#179299' # teal
-      white:   '#ACB0BE' # surface2
+      cyan: '#179299' # teal
+      white: '#ACB0BE' # surface2
 
     # Bright colors
     bright:
-      black:   '#4C4F69' # text
-      red:     '#D20F39' # red
-      green:   '#40A02B' # green
-      yellow:  '#DF8E1D' # yellow
-      blue:    '#1E66F5' # blue
+      black: '#4C4F69' # text
+      red: '#D20F39' # red
+      green: '#40A02B' # green
+      yellow: '#DF8E1D' # yellow
+      blue: '#1E66F5' # blue
       magenta: '#EA76CB' # pink
-      cyan:    '#179299' # teal
-      white:   '#ACB0BE' # surface2
+      cyan: '#179299' # teal
+      white: '#ACB0BE' # surface2
 
     # Dim colors
     dim:
-      black:   '#4C4F69' # text
-      red:     '#D20F39' # red
-      green:   '#40A02B' # green
-      yellow:  '#DF8E1D' # yellow
-      blue:    '#1E66F5' # blue
+      black: '#4C4F69' # text
+      red: '#D20F39' # red
+      green: '#40A02B' # green
+      yellow: '#DF8E1D' # yellow
+      blue: '#1E66F5' # blue
       magenta: '#EA76CB' # pink
-      cyan:    '#179299' # teal
-      white:   '#ACB0BE' # surface2
+      cyan: '#179299' # teal
+      white: '#ACB0BE' # surface2
 
-
-
-  frappe: &frappe
-
-    # Default colors
+  frappe: &frappe # Default colors
     primary:
       background: '#303446' # base
       foreground: '#c6d0f5' # text
@@ -127,42 +118,38 @@ color_schemes:
 
     # Normal colors
     normal:
-      black:   '#51576d' # surface1
-      red:     '#e78284' # red
-      green:   '#a6d189' # green
-      yellow:  '#e5c890' # yellow
-      blue:    '#8caaee' # blue
+      black: '#51576d' # surface1
+      red: '#e78284' # red
+      green: '#a6d189' # green
+      yellow: '#e5c890' # yellow
+      blue: '#8caaee' # blue
       magenta: '#f4b8e4' # pink
-      cyan:    '#81c8be' # teal
-      white:   '#b5bfe2' # subtext1
+      cyan: '#81c8be' # teal
+      white: '#b5bfe2' # subtext1
 
     # Bright colors
     bright:
-      black:   '#51576d' # surface1
-      red:     '#e78284' # red
-      green:   '#a6d189' # green
-      yellow:  '#e5c890' # yellow
-      blue:    '#8caaee' # blue
+      black: '#51576d' # surface1
+      red: '#e78284' # red
+      green: '#a6d189' # green
+      yellow: '#e5c890' # yellow
+      blue: '#8caaee' # blue
       magenta: '#f4b8e4' # pink
-      cyan:    '#81c8be' # teal
-      white:   '#b5bfe2' # subtext1
+      cyan: '#81c8be' # teal
+      white: '#b5bfe2' # subtext1
 
     # Dim colors
     dim:
-      black:   '#51576d' # surface1
-      red:     '#e78284' # red
-      green:   '#a6d189' # green
-      yellow:  '#e5c890' # yellow
-      blue:    '#8caaee' # blue
+      black: '#51576d' # surface1
+      red: '#e78284' # red
+      green: '#a6d189' # green
+      yellow: '#e5c890' # yellow
+      blue: '#8caaee' # blue
       magenta: '#f4b8e4' # pink
-      cyan:    '#81c8be' # teal
-      white:   '#b5bfe2' # subtext1
+      cyan: '#81c8be' # teal
+      white: '#b5bfe2' # subtext1
 
-
-
-  macchiato: &macchiato
-
-    # Default colors
+  macchiato: &macchiato # Default colors
     primary:
       background: '#24273a' # base
       foreground: '#cad3f5' # text
@@ -206,42 +193,38 @@ color_schemes:
 
     # Normal colors
     normal:
-      black:   '#494d64' # surface1
-      red:     '#ed8796' # red
-      green:   '#a6da95' # green
-      yellow:  '#eed49f' # yellow
-      blue:    '#8aadf4' # blue
+      black: '#494d64' # surface1
+      red: '#ed8796' # red
+      green: '#a6da95' # green
+      yellow: '#eed49f' # yellow
+      blue: '#8aadf4' # blue
       magenta: '#f5bde6' # pink
-      cyan:    '#8bd5ca' # teal
-      white:   '#b8c0e0' # subtext1
+      cyan: '#8bd5ca' # teal
+      white: '#b8c0e0' # subtext1
 
     # Bright colors
     bright:
-      black:   '#494d64' # surface1
-      red:     '#ed8796' # red
-      green:   '#a6da95' # green
-      yellow:  '#eed49f' # yellow
-      blue:    '#8aadf4' # blue
+      black: '#494d64' # surface1
+      red: '#ed8796' # red
+      green: '#a6da95' # green
+      yellow: '#eed49f' # yellow
+      blue: '#8aadf4' # blue
       magenta: '#f5bde6' # pink
-      cyan:    '#8bd5ca' # teal
-      white:   '#b8c0e0' # subtext1
+      cyan: '#8bd5ca' # teal
+      white: '#b8c0e0' # subtext1
 
     # Dim colors
     dim:
-      black:   '#494d64' # surface1
-      red:     '#ed8796' # red
-      green:   '#a6da95' # green
-      yellow:  '#eed49f' # yellow
-      blue:    '#8aadf4' # blue
+      black: '#494d64' # surface1
+      red: '#ed8796' # red
+      green: '#a6da95' # green
+      yellow: '#eed49f' # yellow
+      blue: '#8aadf4' # blue
       magenta: '#f5bde6' # pink
-      cyan:    '#8bd5ca' # teal
-      white:   '#b8c0e0' # subtext1
+      cyan: '#8bd5ca' # teal
+      white: '#b8c0e0' # subtext1
 
-
-
-  mocha: &mocha
-
-    # Default colors
+  mocha: &mocha # Default colors
     primary:
       # background: '#1e1e2e' # base
       background: '#181825'
@@ -286,37 +269,35 @@ color_schemes:
 
     # Normal colors
     normal:
-      black:   '#45475a' # surface1
-      red:     '#f38ba8' # red
-      green:   '#a6e3a1' # green
-      yellow:  '#f9e2af' # yellow
-      blue:    '#89b4fa' # blue
+      black: '#45475a' # surface1
+      red: '#f38ba8' # red
+      green: '#a6e3a1' # green
+      yellow: '#f9e2af' # yellow
+      blue: '#89b4fa' # blue
       magenta: '#f5c2e7' # pink
-      cyan:    '#94e2d5' # teal
-      white:   '#bac2de' # subtext1
+      cyan: '#94e2d5' # teal
+      white: '#bac2de' # subtext1
 
     # Bright colors
     bright:
-      black:   '#45475a' # surface1
-      red:     '#f38ba8' # red
-      green:   '#a6e3a1' # green
-      yellow:  '#f9e2af' # yellow
-      blue:    '#89b4fa' # blue
+      black: '#45475a' # surface1
+      red: '#f38ba8' # red
+      green: '#a6e3a1' # green
+      yellow: '#f9e2af' # yellow
+      blue: '#89b4fa' # blue
       magenta: '#f5c2e7' # pink
-      cyan:    '#94e2d5' # teal
-      white:   '#bac2de' # subtext1
+      cyan: '#94e2d5' # teal
+      white: '#bac2de' # subtext1
 
     # Dim colors
     dim:
-      black:   '#45475a' # surface1
-      red:     '#f38ba8' # red
-      green:   '#a6e3a1' # green
-      yellow:  '#f9e2af' # yellow
-      blue:    '#89b4fa' # blue
+      black: '#45475a' # surface1
+      red: '#f38ba8' # red
+      green: '#a6e3a1' # green
+      yellow: '#f9e2af' # yellow
+      blue: '#89b4fa' # blue
       magenta: '#f5c2e7' # pink
-      cyan:    '#94e2d5' # teal
-      white:   '#bac2de' # subtext1
-
-
+      cyan: '#94e2d5' # teal
+      white: '#bac2de' # subtext1
 
 colors: *mocha

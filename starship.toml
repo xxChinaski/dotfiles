@@ -7,8 +7,10 @@ $haskell\
 $lua\
 $python\
 $java\
+$php\
 $nodejs\
-$rust
+$rust\
+$cmd_duration
 $time[» ](bold green)
 """
 
@@ -18,10 +20,9 @@ $time[» ](bold green)
 # You can also replace your username with a neat symbol like  to save some space
 [username]
 show_always = true
-# style_user = "fg:#96cdfb"
 style_user = "fg:#ccb7f2"
 style_root = "fg:#ccb7f2"
-format = '[ $user@linux:]( $style)'
+format = '[ $user@linux:]($style)'
 
 [directory]
 style = "fg:#96cdfb"
@@ -45,7 +46,7 @@ truncation_symbol = "…/"
 [git_branch]
 symbol = 'שׂ '
 style = "fg:#ddb6f2"
-format = '[[ on](fg:#988ba2) $symbol$branch](bold $style)'
+format = '[[on](fg:#988ba2) $symbol$branch](bold $style)'
 
 [git_status]
 style = "fg:#f38ba8"
@@ -53,12 +54,12 @@ format = '[($all_status$ahead_behind)]($style)'
 
 [haskell]
 symbol = " "
-style = "fg:#96cdfb"
+style = "fg:#abe9b3"
 format = '[[ via ](fg:#988ba2)$symbol($version) ](bold $style)'
 
 [lua]
 symbol = " "
-style = "fg:#96cdfb"
+style = "fg:#abe9b3"
 format = '[[ via ](fg:#988ba2)$symbol($version) ](bold $style)'
 
 [python]
@@ -68,21 +69,29 @@ format = '[[ via ](fg:#988ba2)$symbol($version) ](bold $style)'
 
 [java]
 symbol = " "
-style = "fg:#f28fad"
+style = "fg:#abe9b3"
+format = '[[ via ](fg:#988ba2)$symbol($version) ](bold $style)'
+
+[php]
+symbol = "  "
+style = "fg:#abe9b3"
 format = '[[ via ](fg:#988ba2)$symbol($version) ](bold $style)'
 
 [nodejs]
 symbol = " "
-style = "fg:#89dceb"
+style = "fg:#abe9b3"
 format = '[[ via ](fg:#988ba2)$symbol($version) ](bold $style)'
 
 [rust]
-symbol = ""
-style = "fg:#f28fad"
+symbol = " "
+style = "fg:#abe9b3"
 format = '[[ via ](fg:#988ba2)$symbol($version) ](bold $style)'
+
+[cmd_duration]
+format = '[ took ](fg:#988ba2)[$duration]($style)'
 
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
 style = ""
-format = '[ [⚡](fg:#fae3b0)$time ]($style)'
+format = '[[ ⚡](fg:#fae3b0)$time ]($style)'

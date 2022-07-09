@@ -28,7 +28,8 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "<A-k>", ":move .-2<CR>==", opts)
 keymap("n", "<A-j>", ":move .+1<CR>==", opts)
 
-keymap("n", "<leader>e", ":Lex 30<cr>", opts)
+-- keymap("n", "<leader>e", ":Lex 30<cr>", opts)
+keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 -- Remove search highlight
 keymap("n", "<leader>u", ":noh<cr>", opts)
 
@@ -72,5 +73,11 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 
 -- keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts)
-keymap("n", "<leader><leader>", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
+-- keymap("n", "<leader><leader>", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown())<cr>", opts)
+-- keymap("n", "<leader>tt", "<cmd>lua require'telescope.builtin'.live_grep(require('telescope.themes').get_ivy())<cr>", opts)
+-- keymap("n", "<leader>tgc", "<cmd>lua require'telescope.builtin'.git_commits(require('telescope.themes').get_ivy())<cr>", opts)
+-- keymap("n", "<leader>tgs", "<cmd>lua require'telescope.builtin'.git_status(require('telescope.themes').get_ivy())<cr>", opts)
+keymap("n", "<leader><leader>", "<cmd>Telescope find_files<cr>", opts)
+keymap("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts)
+keymap("n", "<leader>gc", "<cmd>Telescope git_commits<cr>", opts)
 keymap("n", "<leader>t", "<cmd>Telescope live_grep<cr>", opts)

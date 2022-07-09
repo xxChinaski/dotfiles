@@ -116,3 +116,4 @@ button selected {
 @theme "/home/dt/.config/rofi/spotlight.rasi"
 //@theme "/home/dt/.local/share/rofi/themes/spotlight.rasi"
 //@theme "/home/dt/.local/share/rofi/themes/tokyonight.rasi"
+/* //@theme "/usr/share/rofi/themes/dmenu.rasi" */

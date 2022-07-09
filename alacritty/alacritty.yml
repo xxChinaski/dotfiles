@@ -38,10 +38,10 @@ window:
   # The value `0.0` is completely transparent and `1.0` is opaque.
   # opacity: 0.85
   opacity: .65 
-  opacity: 1
   opacity: .75  #NOTE CURRENT !!!!!!!
   opacity: .93  #NOTE!
   opacity: .87  
+  opacity: 1
 
   # Window dimensions (changes require restart)
   #

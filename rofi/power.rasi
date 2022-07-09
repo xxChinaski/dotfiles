@@ -1,7 +1,33 @@
+@import "./spotlight.rasi"
+
+* {
+    bg2: #f38ba8;
+    font: "Montserrat 48";
+}
+window {
+    y-offset: -5%;
+  }
+
 inputbar {
-  children: [entry];
+  //children: [entry];
+  enabled: false;
 }
 
 listview {
-	lines: 3;
+  lines: 1;
+	columns: 3;
+}
+element {
+    margin: 5px;
+    text-align: center;
+    padding: 2px;
+    spacing: 0px;
+    border-radius: 10px;
+  }
+
+element selected normal, element selected active {
+    text-color:         @bg2;
+    border: 0 5px 0 5px;
+    background-color: @bg01;
+    border-color: @bg2;
 }

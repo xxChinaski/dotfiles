@@ -514,10 +514,10 @@ c.colors.tabs.selected.even.bg = '#282a36'
 
 c.downloads.location.directory = '~/Downloads/'
 
-# c.fonts.default_size = '11pt'
-# c.fonts.statusbar = '11pt "UbuntuMono Nerd Font"'
-# c.fonts.completion.entry = '11pt "UbuntuMono Nerd Font"'
-# c.fonts.debug_console = '11pt "UbuntuMono Nerd Font"'
+# c.fonts.default_size = '13px'
+# c.fonts.statusbar = '13px "UbuntuMono Nerd Font"'
+# c.fonts.completion.entry = '13px "UbuntuMono Nerd Font"'
+# c.fonts.debug_console = '13px "UbuntuMono Nerd Font"'
 
 config.bind('M', 'hint links spawn mpv {hint-url}')
 config.bind('t', 'set-cmd-text -s :open -t')

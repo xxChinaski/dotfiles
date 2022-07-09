@@ -46,13 +46,15 @@ mpv =  "mpv"
 picom = terminal + " -e picom --experimental-backends --daemon"
 
 keys = [
+    Key([mod], "Up", lazy.layout.increase_margin(), desc="Move focus to left"),
+    Key([mod], "Down", lazy.layout.decrease_magrin(), desc="Move focus to left"),
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
     Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
-     #==========================my bsp============================================
+    #==========================my bsp============================================
 
     Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
@@ -144,29 +146,69 @@ cats = [
     ["#D9E0EE", "#D9E0EE"]]
 
 accentColor = cats[20]
-# bgColor = cats[15]
 bgColor = '#181825'
 thm_pink = cats[3]
 thm_blue = cats[10]
 thm_green = cats[8]
 bgTrans = "#00000000" 
 
-# groups = [Group(" ", layout='MonadTall'),
-#           Group(" ", layout='MonadTall'),
-#           Group(" ", layout='MonadTall'),
-#           Group(" ", layout='MonadTall'),
-#           Group("VBOX", layout='MonadTall'),
-#           Group("CHAT", layout='MonadTall'),
-#           Group("MUS", layout='MonadTall'),
-#           Group("VID", layout='MonadTall'),
-#           Group("GFX", layout='MonadTall'),
-#           Group(" ", layout='MonadTall')
-#         ]
+groups = [
+    Group(
+        "1",
+        label='',
+        layout='Bsp',
+    ),
+    Group(
+        "2",
+        label='',
+        layout='Bsp',
+    ),
+    Group(
+        "3",
+        label='',
+        layout='Bsp',
+    ),
+    Group(
+        "4",
+        label='',
+        layout='Bsp',
+    ),
+    Group(
+        "5",
+        label='',
+        layout='Bsp',
+    ),
+    Group(
+        "6",
+        label='',
+        layout='Bsp',
+    ),
+    Group(
+        "7",
+        label='',
+        layout='Bsp',
+    ),
+    Group(
+        "8",
+        label='',
+        layout='Bsp',
+    ),
+    Group(
+        "9",
+        label='',
+        layout='Bsp',
+    ),
+    Group(
+        "0",
+        label='',
+        layout='Bsp',
+    ),
+]
 #
 # from libqtile.dgroups import simple_key_binder
 # dgroups_key_binder = simple_key_binder("mod4")
 
-groups = [Group(i) for i in "1234567890"]
+# groups = [Group(i) for i in "1234567890"]
 
 for i in groups:
     keys.extend(
@@ -195,9 +237,12 @@ for i in groups:
 layout_theme = {
         "border_width": 2,
         "single_border_width": 0,
-        "margin": 10, 
-        # "border_focus": "#F5E0DC",
+        "margin": 10,
+        "margin_on_single": 15,
+        # "border_focus": "#F5E0DC50",
         "border_focus": "#a6adc8",
+        # "border_focus": "#45475a",
+        # "border_focus": "#96cdfb",
         "border_normal": bgColor,
         }
 
@@ -208,19 +253,19 @@ layouts = [
     # layout.Max(**layout_theme),
     # layout.Spiral(**layout_theme, ratio=0.5),
     # layout.MonadThreeCol(**layout_theme),
+    # layout.Tile(**layout_theme),
     layout.Bsp(**layout_theme,
                fair=False,
                grow_amount=2,
                ),
     layout.Stack(num_stacks=1, margin=10, border_focus="#1E1E2E"),
     # layout.Slice(**layout_theme),
-    # layout.Tile(**layout_theme),
     # Try more layouts by unleashing below layouts.
     # layout.Columns(**layout_theme,
     #     split='false',
     #     num_collumns=1,
     #     ),
-    # layout.RatioTile(**layout_theme),
+    # layout.RatioTile(**layout_theme, fancy = True),
     # layout.MonadWide(**layout_theme),
     # layout.Matrix(),
     # layout.TreeTab(),
@@ -247,8 +292,8 @@ colors = [
 
 widget_defaults = dict(
     font="UbuntuMono Nerd Font",
-    fontsize=14,
-    padding=5,
+    fontsize=12,
+    padding=3,
     background=bgColor,
     foreground=cats[0],
 )
@@ -257,87 +302,87 @@ extension_defaults = widget_defaults.copy()
 screens = [
     Screen(
          # top=bar.Bar(
-             # [
-             #     widget.GroupBox(
-             #         highlight_method = 'line',
-             #         center_aligned = 'true',
-             #         this_current_screen_border=accentColor,
-             #         inactive = cats[16],
-             #         background = bgColor,
-             #         foreground = colors[2],
-             #         borderwidth=2,
-             #         margin=4,
-             #         hide_unused = True,
-             #         fontsize = 14,
-             #         rounded = True,
-             #         ),
-             #     widget.Sep(
-             #            foreground="#96CDFB",
-             #            line_width=2,
-             #            size_percent=50,
-             #            ),
-             #     widget.CPU(
-             #        format = '  {load_percent} %' ,
-             #    ),
-             #     widget.Spacer(
-             #         background = "#181825",
-             #         ),
-             #     widget.Chord(
-             #         chords_colors={
-             #             "launch": ("#ff0000", "#ffffff"),
-             #         },
-             #         name_transform=lambda name: name.upper(),
-             #     ),
-             #     widget.Net(
-             #         interface='all',
-             #         format = 'Net:{down} ↓↑{up}',
-             #         background = bgColor,
-             #         ),
-             #     widget.Sep(
-             #            foreground="#96CDFB",
-             #            line_width=2,
-             #            size_percent=50,
-             #            ),
-             #     widget.Cmus(
-             #        foreground = thm_pink,
-             #        play_color = thm_green,
-             #    ),
-             #     widget.Volume(
-             #            fmt = 'Vol: {}',
-             #             background = bgColor,
-             #            ),
-             #     widget.Sep(
-             #            foreground="#96CDFB",
-             #            line_width=2,
-             #            size_percent=50,
-             #            ),
-             #     widget.Clock(
-             #         format="%a, %B %d %I:%M %p",
-             #         background = bgColor,
-             #         ),
-             #     widget.Sep(
-             #            foreground="#96CDFB",
-             #            line_width=2,
-             #            size_percent=50,
-             #            ),
-             #     widget.CurrentLayout(
-             #         background = bgColor,
-             #         padding=5,
-             #         ),
-             #     widget.Sep(
-             #            linewidth = 0,
-             #            padding = 10,
-             #            foreground = colors[2],
-             #            background = bgColor
-             #            ),
-             # ],
-             # 20,
-             # background="#0b151ea6",
-             # background=bgTrans,
-         #     background="#181825",
+         #     [
+         #         widget.GroupBox(
+         #             highlight_method = 'line',
+         #             center_aligned = 'true',
+         #             this_current_screen_border=accentColor,
+         #             inactive = cats[16],
+         #             background = bgColor,
+         #             foreground = colors[2],
+         #             borderwidth=2,
+         #             margin=4,
+         #             fontsize = 14,
+         #             rounded = True,
+         #             ),
+         #         widget.Sep(
+         #                foreground="#96CDFB",
+         #                line_width=2,
+         #                size_percent=50,
+         #                ),
+         #         widget.CPU(
+         #            format = '  {load_percent} %' ,
+         #        ),
+         #         widget.Spacer(
+         #             background = "#181825",
+         #             ),
+         #         widget.Chord(
+         #             chords_colors={
+         #                 "launch": ("#ff0000", "#ffffff"),
+         #             },
+         #             name_transform=lambda name: name.upper(),
+         #         ),
+         #         widget.Net(
+         #             interface='all',
+         #             format = 'Net:{down}',
+         #             background = bgColor,
+         #             ),
+         #         widget.Sep(
+         #                foreground="#96CDFB",
+         #                line_width=2,
+         #                size_percent=50,
+         #                ),
+         #         widget.Cmus(
+         #            foreground = thm_pink,
+         #            play_color = thm_green,
+         #        ),
+         #         widget.Volume(
+         #                fmt = 'Vol: {}',
+         #                 background = bgColor,
+         #                ),
+         #         widget.Sep(
+         #                foreground="#96CDFB",
+         #                line_width=2,
+         #                size_percent=50,
+         #                ),
+         #         widget.Clock(
+         #             format="%a, %B %d %I:%M %p",
+         #             background = bgColor,
+         #             ),
+         #         widget.Sep(
+         #                foreground="#96CDFB",
+         #                line_width=2,
+         #                size_percent=50,
+         #                ),
+         #         widget.CurrentLayout(
+         #             background = bgColor,
+         #             padding=5,
+         #             ),
+         #         widget.Sep(
+         #                linewidth = 0,
+         #                padding = 10,
+         #                foreground = colors[2],
+         #                background = bgColor
+         #                ),
+         #     ],
+         #     22,
+         #     background="#0b151ea6",
+         #     # background=bgTrans,
+         #     # background="#181825",
          #     # margin=[10, 10, 0, 10],
          # ),
-        wallpaper='~/Downloads/wallpapers/brett-ritchie-S0c_wsCmlXE-unsplash.jpg',
+        # wallpaper='~/Downloads/wallpapers/brett-ritchie-S0c_wsCmlXE-unsplash.jpg',
+        wallpaper='~/Downloads/wallpapers/mountx.jpg',
         wallpaper_mode='fill',
     ),
 ]

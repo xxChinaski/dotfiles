@@ -24,6 +24,7 @@ catppuccin.setup(
       native_lsp = {
         enabled = true,
         virtual_text = {
+          -- errors = "italic",
           errors = "italic",
           hints = "italic",
           warnings = "italic",
@@ -38,7 +39,7 @@ catppuccin.setup(
       },
       lsp_trouble = false,
       cmp = true,
-      lsp_saga = false,
+      lsp_saga = true,
       gitgutter = false,
       gitsigns = true,
       telescope = true,
@@ -55,7 +56,7 @@ catppuccin.setup(
       which_key = false,
       indent_blankline = {
         enabled = true,
-        colored_indent_levels = false,
+        colored_indent_levels = true,
       },
       dashboard = true,
       neogit = false,
@@ -66,7 +67,7 @@ catppuccin.setup(
       markdown = true,
       lightspeed = false,
       ts_rainbow = true,
-      hop = false,
+      hop = true,
       notify = true,
       telekasten = true,
       symbols_outline = true,

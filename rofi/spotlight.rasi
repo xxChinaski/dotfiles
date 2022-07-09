@@ -5,16 +5,19 @@
  *******************************************************************************/
 
 * {
-    font:   "JetBrains Mono Nerd Font 12";
-    font:   "Montserrat 12";
+    font:   "JetBrains Mono Nerd Font 11";
+    font:   "Montserrat 11";
 
     bg0:    #242424E6;
     bg0:  rgba( 30, 30, 46, 0.75 );
-    bg0:  rgba(24, 24, 37, 0.75);
-    bg01:  rgba( 24, 24, 37, 1);
+    bg01:  rgba(24, 24, 37, 0.85);
+    bg01:  #1e1e2e;
+    bg0:  rgba( 24, 24, 37, 0.85);
+    bg02:  rgba( 24, 24, 37, 0);
     bg1:    #7E7E7E80;
     bg2:    #0860f2E6;
-    bg2:    #e8a2afE6;
+    bg2:    #e8a2af;
+    bg2:    #89b4fa;
 
     fg0:    #DEDEDE;
     fg1:    #FFFFFF;
@@ -29,29 +32,33 @@
 }
 
 window {
-    background-color:   @bg0;
+    //background-color:   @bg0;
+    background-color:   @bg02;
 
     location:       center;
     width:          640;
     y-offset:       -25%;
-    border-radius:  15px;
+    border-radius:  2px;
     // border: 1;
     // border-color: @bg2;
 }
 
 inputbar {
-    font:       "Montserrat 12";
-    background-color: @bg2;
+    font:       "Montserrat 11";
+    background-color: @bg0;
     text-color: @fg0;
-    padding:    8px 16px;
+    //padding:    8px 16px;
     spacing:    6px;
-    margin: 10px;
-    border-radius: 25px;
-    children:   [ entry ];
+    margin: 2px 10px;
+    border-radius: 2px;
+    children:   [prompt,  entry ];
+    //enabled: false;
 }
 
 prompt {
     text-color: @bg01;
+    padding: 4px 16px;
+    background-color: @bg2;
   }
 
 icon-search {
@@ -60,14 +67,14 @@ icon-search {
     size: 12px;
 }
 
-icon-search, entry, element-icon, element-text {
+icon-search, prompt, entry, element-icon, element-text {
     vertical-align: 0.5;
 }
 
 entry {
     font:   inherit;
-
-    text-color: @bg01;
+    text-color: @bg2;
+    padding: 8px 16px;
     placeholder         : "";
     placeholder-color   : @bg2;
 }
@@ -93,18 +100,25 @@ listview {
 }
 
 element {
-    padding:            4px 16px;
+    padding:            8px 16px;
+    margin : 2px 0px;
     spacing:            16px;
-    background-color:   transparent;
+    background-color:   @bg0;
+    border-radius: 2px;
 }
 
 element normal active {
     text-color: @bg2;
+    border-left: 2px;
+    border-color: red;
+    background-color: @bg02;
 }
 
 element selected normal, element selected active {
-    /* background-color:   @bg2; */
     text-color:         @bg2;
+    border: 0 5px 0 5px;
+    background-color: @bg01;
+    border-color: @bg2;
 }
 
 
