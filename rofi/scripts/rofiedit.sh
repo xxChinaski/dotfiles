@@ -12,9 +12,10 @@ menu(){
 	printf "6. sxhkd\n"
   printf "7. .bashrc\n"
 	printf "8. qtile\n"
-	printf "9. rofi\n"
-	printf "10. fish\n"
-	printf "11. quickmarks\n"
+	printf "9. bspwm\n"
+	printf "10. rofi\n"
+	printf "11. fish\n"
+	printf "12. quickmarks\n"
 }
 
 main(){
@@ -29,9 +30,10 @@ main(){
 		6) $myTerm -e sh -c "sleep 0.1 ; cd $HOME/.config/sxhkd/; $myEdit sxhkdrc" ;;
 		7) $myTerm -e sh -c "sleep 0.1 ; $myEdit $HOME/.bashrc" ;;
 		8) $myTerm -e sh -c "sleep 0.1 ; cd $HOME/.config/qtile/; $myEdit config.py" ;;
-		9) $myTerm -e sh -c "sleep 0.1 ; cd $HOME/.config/rofi/; $myEdit config.rasi" ;;
-		10) $myTerm -e sh -c "sleep 0.1 ; cd $HOME/.config/fish/; $myEdit config.fish" ;;
-		11) $myTerm -e sh -c "sleep 0.1 ; cd $HOME/.config/qutebrowser/; $myEdit quickmarks" ;;
+		9) $myTerm -e sh -c "sleep 0.1 ; cd $HOME/.config/bspwm/; $myEdit bspwmrc" ;;
+		10) $myTerm -e sh -c "sleep 0.1 ; cd $HOME/.config/rofi/; $myEdit config.rasi" ;;
+		11) $myTerm -e sh -c "sleep 0.1 ; cd $HOME/.config/fish/; $myEdit config.fish" ;;
+		12) $myTerm -e sh -c "sleep 0.1 ; cd $HOME/.config/qutebrowser/; $myEdit quickmarks" ;;
   esac
 }
 

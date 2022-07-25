@@ -55,11 +55,16 @@ return packer.startup(function(use)
     use "kyazdani42/nvim-web-devicons"
     use "kyazdani42/nvim-tree.lua"
     use 'norcalli/nvim-colorizer.lua'
+    use "lewis6991/impatient.nvim"
+    use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight ???
     -- Catppuccin colorscheme
     use({
         "catppuccin/nvim",
         as = "catppuccin"
     })
+
+    -- -- One Dark colorscheme
+    -- use 'navarasu/onedark.nvim'
     -- Status line
     use "nvim-lualine/lualine.nvim"
     -- cmp plug
@@ -95,6 +100,8 @@ return packer.startup(function(use)
 
     -- prettier
     -- use 'sbdchd/neoformat'
+    -- Barbar
+    use "romgrk/barbar.nvim"
 
     -- Easymotion
     use {

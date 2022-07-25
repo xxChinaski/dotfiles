@@ -14,6 +14,7 @@ local colors = {
   magenta  = '#cba6f7',
   blue     = '#96cdfb',
   red      = '#e5b4e2',
+  gitRed      = '#ff0000',
 }
 
 local conditions = {
@@ -91,12 +92,8 @@ local modeColor = function()
     t = colors.yellow,
   }
   return { fg = mode_color[vim.fn.mode()], gui = 'bold' }
-  -- return { fg = mode_color[vim.fn.mode()] }
 end
 
--- local modeColorFG = function ()
---   return { fg = }
--- end
 
 -- Inserts a component in lualine_c at left section
 local function ins_left(component)
@@ -127,19 +124,30 @@ ins_left {
 }
 
 ins_left {
+  'filesize',
+  cond = conditions.buffer_not_empty,
+}
+
+ins_left {
   'filename',
   cond = conditions.buffer_not_empty,
   color = modeColor,
 }
 
 ins_left {
-  'filesize',
-  cond = conditions.buffer_not_empty,
+  'diagnostics',
+  sources = { 'nvim_diagnostic' },
+  symbols = { error = ' ', warn = ' ', info = ' ' },
+  diagnostics_color = {
+    color_error = { fg = colors.red },
+    color_warn = { fg = colors.yellow },
+    color_info = { fg = colors.cyan },
+  },
 }
 
 ins_left {
   'branch',
-  icon = 'שׂ',
+  icon = '',
   color = { fg = colors.violet, gui = 'bold' },
 }
 
@@ -149,7 +157,7 @@ ins_left {
 	symbols = { added = "  ", modified = "  ", removed = "  " }, -- changes diff symbols
   diff_color = {
     added = { fg = colors.green },
-    modified = { fg = colors.orange },
+    modified = { fg = colors.yellow },
     removed = { fg = colors.red },
   },
   cond = conditions.hide_in_width,
@@ -182,7 +190,7 @@ ins_left {
 --     return msg
 --   end,
 --   icon = ' ',
---   color = { fg = '#ffffff', gui = '' },
+--   color = { fg = colors.fg, gui = '' },
 -- }
 
 -- Add components to right sections
@@ -190,24 +198,13 @@ ins_left {
 ins_right {
   'filetype',
   fmt = string.upper,
-  -- icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
+  icons_enabled = true, -- I think icons are cool but Eviline doesn't have them. sigh
   color = { fg = colors.fg, gui = '' },
 }
 
 ins_right { 'location' }
 
 ins_right{ 'progress', color = { fg = colors.fg, gui = 'bold' } }
-
-ins_right {
-  'diagnostics',
-  sources = { 'nvim_diagnostic' },
-  symbols = { error = ' ', warn = ' ', info = ' ' },
-  diagnostics_color = {
-    color_error = { fg = colors.red },
-    color_warn = { fg = colors.yellow },
-    color_info = { fg = colors.cyan },
-  },
-}
 
 ins_right {
   'o:encoding', -- option component same as &encoding in viml

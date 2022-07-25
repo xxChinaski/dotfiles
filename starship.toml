@@ -22,11 +22,12 @@ $time[» ](bold green)
 show_always = true
 style_user = "fg:#ccb7f2"
 style_root = "fg:#ccb7f2"
-format = '[ $user@linux:]($style)'
+# format = '[ $user@linux:  ]($style)'
+format = '[  ]($style)'
 
 [directory]
 style = "fg:#96cdfb"
-format = "[ $path ]($style bold)"
+format = "[ in ](fg:#988ba2)[$path ]($style bold)"
 truncation_length = 3
 truncation_symbol = "…/"
 

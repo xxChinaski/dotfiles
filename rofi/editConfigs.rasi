@@ -9,19 +9,43 @@
     bg2: #a6e3a1;
   }
 
+configuration {
+    display-drun: "   Configs   ";
+    display-dmenu: "   Run   ";
+  }
 window {
-    location: center;
-    y-offset: -10%;
+
   }
 
+horibox {
+    children: [ textbox-prompt-colon, entry, listview ];
+  }
+
+prompt {
+  content: " CONFIGS ";
+  }
+
+
+#textbox-prompt-colon {
+  content: " Configs ";
+  expand: false;
+  vertical-align: 0.5;
+  text-color: @bg00;
+  padding: 4px 16px;
+  background-color: @bg2;
+  /* padding: 15px 5px 0 25px; */
+}
+
 inputbar {
-    enabled: false;
+    /* enabled: false; */
+    children: [textbox-prompt-colon, entry];
   }
 
 listview {
-    columns: 3;
-    lines: 4;
+    /* layout: horizontal; */
+    columns: 4;
+    fixed-columns: true;
   }
 element { 
-  margin: 3px;
+  /* margin: 3px; */
   }

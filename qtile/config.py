@@ -30,14 +30,16 @@ import subprocess
 
 from libqtile import qtile
 from libqtile import bar, layout, widget, hook
-from libqtile.config import Click, Drag, Group, KeyChord, Key, Match, Screen
+from libqtile.config import Click, Drag, Group, KeyChord, Key, Match, Screen, ScratchPad, DropDown
 from libqtile.command import lazy
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 from typing import List
 
 mod = "mod4"
-terminal = guess_terminal()
+mod1 = "mod1"
+# terminal = guess_terminal()
+terminal = 'kitty'
 browser = "qutebrowser"
 file_manager = terminal + " -e vifm"
 gui_file_manager = "pcmanfm"
@@ -172,6 +174,7 @@ groups = [
         "4",
         label='',
         layout='Bsp',
+        matches=[Match(wm_class=["Steam"])],
     ),
     Group(
         "5",
@@ -187,11 +190,15 @@ groups = [
         "7",
         label='',
         layout='Bsp',
+        matches=[Match(wm_class=["Figma"])],
     ),
     Group(
         "8",
         label='',
         layout='Bsp',
+        matches=[
+            Match(wm_class=["TelegramDesktop"]), 
+            Match(wm_class=["discord"])],
     ),
     Group(
         "9",
@@ -211,38 +218,50 @@ groups = [
 # groups = [Group(i) for i in "1234567890"]
 
 for i in groups:
-    keys.extend(
-        [
-            # mod1 + letter of group = switch to group
-            Key(
-                [mod],
-                i.name,
-                lazy.group[i.name].toscreen(),
-                desc="Switch to group {}".format(i.name),
-            ),
-            # mod1 + shift + letter of group = switch to & move focused window to group
-            Key(
-                [mod, "shift"],
-                i.name,
-                lazy.window.togroup(i.name, switch_group=True),
-                desc="Switch to & move focused window to group {}".format(i.name),
-            ),
-            # Or, use below if you prefer not to switch to that group.
-            # # mod1 + shift + letter of group = move focused window to group
-            # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-            #     desc="move focused window to group {}".format(i.name)),
-        ]
-    )
+    keys.extend([
+        # mod1 + letter of group = switch to group
+        Key(
+            [mod],
+            i.name,
+            lazy.group[i.name].toscreen(),
+            desc="Switch to group {}".format(i.name),
+        ),
+        # mod1 + shift + letter of group = switch to & move focused window to group
+        Key(
+            [mod, "shift"],
+            i.name,
+            lazy.window.togroup(i.name, switch_group=True),
+            desc="Switch to & move focused window to group {}".format(i.name),
+        ),
+        # Or, use below if you prefer not to switch to that group.
+        # # mod1 + shift + letter of group = move focused window to group
+        # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
+        #     desc="move focused window to group {}".format(i.name)),
+        Key([mod1, 'control'], '1', lazy.group['scratchpad'].dropdown_toggle('term')),
+        Key([mod1, 'control'], '2', lazy.group['scratchpad'].dropdown_toggle('vifm')),
+        Key([mod1, 'control'], '3', lazy.group['scratchpad'].dropdown_toggle('cmus')),
+        Key([mod1, 'control'], '4', lazy.group['scratchpad'].dropdown_toggle('htop')),
+        Key([mod1, 'control'], '8', lazy.group['scratchpad'].dropdown_toggle('manfm')),
+        Key([mod1, 'control'], '0', lazy.group['scratchpad'].dropdown_toggle('mutt')),
+    ])
+
+groups.append(
+   ScratchPad('scratchpad', {
+       DropDown('term', 'kitty', opacity=1, height=0.5, width=0.5, x=0.25, y=0.25),
+       DropDown('vifm', 'kitty -e vifm', opacity=1, height=0.5, width=0.5, x=0.25, y=0.25),
+       DropDown('cmus', 'kitty -e cmus', opacity=1, height=0.5, width=0.5, x=0.25, y=0.25),
+       DropDown('htop', 'kitty -e htop', opacity=1, height=0.5, width=0.5, x=0.25, y=0.25),
+       DropDown('mutt', 'kitty -e neomutt', opacity=1, height=0.5, width=0.5, x=0.25, y=0.25),
+       DropDown('manfm', 'pcmanfm', opacity=1, height=0.5, width=0.5, x=0.25, y=0.25),
+   }),
+)
 
 layout_theme = {
         "border_width": 2,
         "single_border_width": 0,
         "margin": 10,
-        "margin_on_single": 15,
-        # "border_focus": "#F5E0DC50",
+        "margin_on_single": 25,
         "border_focus": "#a6adc8",
-        # "border_focus": "#45475a",
-        # "border_focus": "#96cdfb",
         "border_normal": bgColor,
         }
 
@@ -273,15 +292,10 @@ layouts = [
     # layout.Zoomy(),
 ]
 
-#"#0b151e", "#0b151e"],
 colors = [
-          # ["#00000000", "#00000000"],
-          # ["#0b151e", "#0b151e"],
           ["#0b151ea6", "#0b151ea6"],
           ["#1c1f24", "#1c1f24"],
           ["#c0caf5", "#c0caf5"],
-          # ["#dfdfdf", "#dfdfdf"],
-          # ["#dadada", "#dadada"],
           ["#ff6c6b", "#ff6c6b"],
           ["#98be65", "#98be65"],
           ["#da8548", "#da8548"],
@@ -291,9 +305,10 @@ colors = [
           ["#a9a1e1", "#a9a1e1"]]
 
 widget_defaults = dict(
-    font="UbuntuMono Nerd Font",
-    fontsize=12,
-    padding=3,
+    font="Ubuntu Nerd Font",
+    # font="JetBrains Nerd Font",
+    fontsize=14,
+    padding=5,
     background=bgColor,
     foreground=cats[0],
 )
@@ -303,28 +318,31 @@ screens = [
     Screen(
          # top=bar.Bar(
          #     [
-         #         widget.GroupBox(
-         #             highlight_method = 'line',
-         #             center_aligned = 'true',
-         #             this_current_screen_border=accentColor,
-         #             inactive = cats[16],
-         #             background = bgColor,
-         #             foreground = colors[2],
-         #             borderwidth=2,
-         #             margin=4,
-         #             fontsize = 14,
-         #             rounded = True,
-         #             ),
          #         widget.Sep(
          #                foreground="#96CDFB",
-         #                line_width=2,
-         #                size_percent=50,
+         #                linewidth=5,
+         #                size_percent=200,
          #                ),
          #         widget.CPU(
          #            format = '  {load_percent} %' ,
          #        ),
          #         widget.Spacer(
-         #             background = "#181825",
+         #             background = bgTrans,
+         #             ),
+         #         widget.GroupBox(
+         #             highlight_method = 'text',
+         #             center_aligned = 'true',
+         #             this_current_screen_border="#abe9b3",
+         #             inactive = "#1e1e2e",
+         #             active = "#96cdfb",
+         #             background = bgTrans,
+         #             borderwidth=2,
+         #             margin=4,
+         #             fontsize = 14,
+         #             rounded = True,
+         #             ),
+         #         widget.Spacer(
+         #             background = bgTrans,
          #             ),
          #         widget.Chord(
          #             chords_colors={
@@ -343,46 +361,53 @@ screens = [
          #                size_percent=50,
          #                ),
          #         widget.Cmus(
-         #            foreground = thm_pink,
-         #            play_color = thm_green,
+         #            background = "#F28FAD",
+         #            foreground = bgColor,
+         #            play_color = bgColor,
+         #        ),
+         #         widget.Sep(
+         #                background=bgTrans,
+         #                foreground=bgTrans,
+         #                line_width=15,
+         #                padding=10,
+         #                size_percent=50,
+         #                ),
+         #        widget.TextBox(
+         #            text="",
+         #            foreground="#F28FAD",
+         #            background=bgTrans,
+         #            fontsize=18,
+         #            padding=-1,
          #        ),
          #         widget.Volume(
-         #                fmt = 'Vol: {}',
-         #                 background = bgColor,
+         #            fmt = '墳 {}',
+         #            foreground = bgColor,
+         #            background = "#F28FAD",
          #                ),
-         #         widget.Sep(
-         #                foreground="#96CDFB",
-         #                line_width=2,
-         #                size_percent=50,
-         #                ),
+         #        widget.TextBox(
+         #            text="  ",
+         #            # font="Font Awesome 6 Free Solid",
+         #            foreground="#F28FAD",
+         #            background=bgTrans,
+         #            fontsize=18,
+         #            padding=0,
+         #        ),
          #         widget.Clock(
-         #             format="%a, %B %d %I:%M %p",
-         #             background = bgColor,
+         #             format="%b %d, %a %I:%M %p",
+         #             foreground = bgColor,
+         #             background = "#ddb6f2",
          #             ),
          #         widget.Sep(
          #                foreground="#96CDFB",
-         #                line_width=2,
-         #                size_percent=50,
-         #                ),
-         #         widget.CurrentLayout(
-         #             background = bgColor,
-         #             padding=5,
-         #             ),
-         #         widget.Sep(
-         #                linewidth = 0,
-         #                padding = 10,
-         #                foreground = colors[2],
-         #                background = bgColor
+         #                linewidth=5,
+         #                size_percent=200,
          #                ),
          #     ],
-         #     22,
+         #     21,
          #     background="#0b151ea6",
-         #     # background=bgTrans,
-         #     # background="#181825",
-         #     # margin=[10, 10, 0, 10],
          # ),
-        # wallpaper='~/Downloads/wallpapers/brett-ritchie-S0c_wsCmlXE-unsplash.jpg',
-        wallpaper='~/Downloads/wallpapers/mountx.jpg',
+        # wallpaper='~/Downloads/wallpapers/girl.png',
+        wallpaper='~/Downloads/wallpapers/sakura.jpg',
         wallpaper_mode='fill',
     ),
 ]
@@ -393,6 +418,7 @@ mouse = [
     Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
+
 
 # dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
@@ -410,7 +436,8 @@ floating_layout = layout.Floating(
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
     ],
-    border_width = 0,
+    border_width = 2,
+    border_focus = "#575268",
 )
 auto_fullscreen = True
 focus_on_window_activation = "smart"

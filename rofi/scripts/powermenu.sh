@@ -4,9 +4,9 @@ myTerm=kitty
 myEdit=nvim
 
 menu(){
-	printf " \n"
-	printf " \n"
-  printf " \n"
+	printf "  Shutdown\n"
+	printf "  Reboot\n"
+  printf "  Lock\n"
 }
 
 main(){

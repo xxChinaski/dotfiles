@@ -16,15 +16,18 @@ require("telescope").setup({
         anchor = 'CENTER',
         width = 0.7,
         height = {padding = 5},
-        prompt_position = 'top',
+        prompt_position = 'bottom',
+        flip_columns = 120,
+        flip_lines = 30,
         vertical = {
           preview_height = 0.6,
           mirror = true,
-          preview_cutoff = 10,
-          prompt_position = 'top',
+          preview_cutoff = 5,
+          prompt_position = "bottom",
         },
         horizontal = {
           preview_width = 0.6,
+          prompt_position = 'bottom',
           preview_cutoff = 30,
         },
       },
@@ -36,6 +39,7 @@ require("telescope").setup({
     },
 
     -- preview = false,
+    prompt_position = 'bottom',
     prompt_prefix = " Search:  ",
     selection_caret = " > ",
     path_display = { "truncate" },
@@ -72,14 +76,3 @@ require("telescope").setup({
   },
 })
 
--- local M = {}
---
--- M.search_dotfiles = function()
---   require("telescope.builtin").find_files({
---     prompt_title = "DotFiles",
---     cwd = vim.env.DOTFILES,
---     hidden = true,
---   })
--- end
---
--- return M
