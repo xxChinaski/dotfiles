@@ -9,11 +9,27 @@ toggleterm.setup({
 	hide_numbers = true,
 	shade_filetypes = {},
 	shade_terminals = true,
-	shading_factor = 2,
+	shading_factor = 1,
 	start_in_insert = true,
 	insert_mappings = true,
 	persist_size = true,
 	direction = "float",
+  highlights = {
+    -- highlights which map to a highlight group name and a table of it's values
+    -- NOTE: this is only a subset of values, any group placed here will be set for the terminal window split
+    Normal = {
+      guibg = "<VALUE-HERE>",
+    },
+    NormalFloat = {
+      link = 'Normal'
+    },
+    FloatBorder = {
+      guifg = "#2e2e3e",
+      -- guifg = "#EBA0AC",
+      -- guifg = "#F9E2AF",
+    },
+  },
+	-- direction = "horizontal",
 	close_on_exit = true,
 	shell = vim.o.shell,
 	float_opts = {

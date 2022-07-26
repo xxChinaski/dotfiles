@@ -124,7 +124,10 @@ cmp.setup {
     },
   },
   experimental = {
-    ghost_text = false,
-    native_menu = false,
+    ghost_text = true ,
+    -- native_menu = true,
   },
+  view = {
+    entries = "native"
+  }
 }

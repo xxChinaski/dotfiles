@@ -247,6 +247,7 @@ for i in groups:
 
 groups.append(
    ScratchPad('scratchpad', {
+       # DropDown('term', 'kitty', opacity=1, height=0.5, width=1, x=0, y=-0.025),
        DropDown('term', 'kitty', opacity=1, height=0.5, width=0.5, x=0.25, y=0.25),
        DropDown('vifm', 'kitty -e vifm', opacity=1, height=0.5, width=0.5, x=0.25, y=0.25),
        DropDown('cmus', 'kitty -e cmus', opacity=1, height=0.5, width=0.5, x=0.25, y=0.25),
@@ -261,7 +262,8 @@ layout_theme = {
         "single_border_width": 0,
         "margin": 10,
         "margin_on_single": 25,
-        "border_focus": "#a6adc8",
+        # "border_focus": "#a6adc8",
+        "border_focus": "#45475a",
         "border_normal": bgColor,
         }
 
@@ -437,7 +439,7 @@ floating_layout = layout.Floating(
         Match(title="pinentry"),  # GPG key password entry
     ],
     border_width = 2,
-    border_focus = "#575268",
+    border_focus = "#2e2e3e",
 )
 auto_fullscreen = True
 focus_on_window_activation = "smart"

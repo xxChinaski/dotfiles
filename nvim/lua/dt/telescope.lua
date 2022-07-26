@@ -9,41 +9,41 @@ local actions = require "telescope.actions"
 
 require("telescope").setup({
   defaults = {
-
-    layout_strategy = 'flex',
+    initial_mode = "insert",
+    selection_strategy = "reset",
+    sorting_strategy = "ascending",
+    layout_strategy = "horizontal",
+    results_title = false,
+		-- borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
     layout_config = {
-      flex = {
-        anchor = 'CENTER',
-        width = 0.7,
-        height = {padding = 5},
-        prompt_position = 'bottom',
-        flip_columns = 120,
-        flip_lines = 30,
-        vertical = {
-          preview_height = 0.6,
-          mirror = true,
-          preview_cutoff = 5,
-          prompt_position = "bottom",
-        },
-        horizontal = {
-          preview_width = 0.6,
-          prompt_position = 'bottom',
-          preview_cutoff = 30,
-        },
+      horizontal = {
+        prompt_position = "bottom",
+        preview_width = 0.65,
+        results_width = 0.8,
       },
+      vertical = {
+        mirror = false,
+      },
+      width = 0.87,
+      height = 0.80,
+      preview_cutoff = 60,
     },
-    borderchars = {
-      prompt = {"─", "│", "─", "│", "┌", "┐", "┘", "└"},
-      results = {"─", "│", "─", "│", "┌", "┐", "┘", "└"},
-      preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
-    },
+    -- borderchars = {
+    --   prompt = {"─", "│", "─", "│", "┌", "┐", "┘", "└"},
+    --   results = {"─", "│", "─", "│", "┌", "┐", "┘", "└"},
+    --   preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+    -- },
 
     -- preview = false,
     prompt_position = 'bottom',
     prompt_prefix = " Search:  ",
     selection_caret = " > ",
     path_display = { "truncate" },
-    file_ignore_patterns = { "node_modules" },
+    file_ignore_patterns = {
+      "node_modules",
+      ".git/",
+      "__pycache__/*",
+    },
 
     mappings = {
       i = {

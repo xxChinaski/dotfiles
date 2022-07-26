@@ -3,7 +3,8 @@ local lualine = require('lualine')
 -- Color table for highlights
 -- stylua: ignore
 local colors = {
-  bg       = '#20232800',
+  -- bg       = '#20232800',
+  bg       = '#181825',
   fg       = '#bcc0cc',
   yellow   = '#f5e0dc',
   cyan     = '#f5c2e7',
@@ -109,7 +110,6 @@ ins_left {
   function()
     return '▊'
   end,
-  -- color = { fg = colors.blue }, -- Sets highlighting of component
   color = modeColor,
   padding = { left = 0, right = 1 }, -- We don't need space before this
 }
@@ -129,10 +129,40 @@ ins_left {
 }
 
 ins_left {
+  -- mode component
+  function()
+    return ''
+  end,
+  color = { fg = "#2e2e3e"},
+  padding = 0,
+}
+
+ins_left {
+  fmt = string.upper,
+  'filetype',
+  -- icons_enabled = true, -- I think icons are cool but Eviline doesn't have them. sigh
+  icon_only = true,
+  color = { fg = colors.fg, bg = "#2e2e3e", gui = '' },
+}
+
+ins_left {
   'filename',
   cond = conditions.buffer_not_empty,
-  color = modeColor,
+  -- color = modeColor,
+  color = { fg = colors.fg , bg = "#2e2e3e" }, -- Sets highlighting of component
+  path = 1,
 }
+
+ins_left {
+  -- mode component
+  function()
+    return ''
+  end,
+  color = { fg = "#2e2e3e"},
+  padding = 0,
+}
+
+ins_left { 'location' }
 
 ins_left {
   'diagnostics',
@@ -143,24 +173,6 @@ ins_left {
     color_warn = { fg = colors.yellow },
     color_info = { fg = colors.cyan },
   },
-}
-
-ins_left {
-  'branch',
-  icon = '',
-  color = { fg = colors.violet, gui = 'bold' },
-}
-
-ins_left {
-  'diff',
-  -- Is it me or the symbol for modified us really weird
-	symbols = { added = "  ", modified = "  ", removed = "  " }, -- changes diff symbols
-  diff_color = {
-    added = { fg = colors.green },
-    modified = { fg = colors.yellow },
-    removed = { fg = colors.red },
-  },
-  cond = conditions.hide_in_width,
 }
 
 
@@ -196,13 +208,22 @@ ins_left {
 -- Add components to right sections
 
 ins_right {
-  'filetype',
-  fmt = string.upper,
-  icons_enabled = true, -- I think icons are cool but Eviline doesn't have them. sigh
-  color = { fg = colors.fg, gui = '' },
+  'branch',
+  icon = '',
+  color = { fg = colors.violet, gui = 'bold' },
 }
 
-ins_right { 'location' }
+ins_right {
+  'diff',
+  -- Is it me or the symbol for modified us really weird
+	symbols = { added = "  ", modified = "  ", removed = "  " }, -- changes diff symbols
+  diff_color = {
+    added = { fg = colors.green },
+    modified = { fg = colors.yellow },
+    removed = { fg = colors.red },
+  },
+  cond = conditions.hide_in_width,
+}
 
 ins_right{ 'progress', color = { fg = colors.fg, gui = 'bold' } }
 
