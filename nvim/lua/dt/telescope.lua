@@ -28,12 +28,6 @@ require("telescope").setup({
       height = 0.80,
       preview_cutoff = 60,
     },
-    -- borderchars = {
-    --   prompt = {"─", "│", "─", "│", "┌", "┐", "┘", "└"},
-    --   results = {"─", "│", "─", "│", "┌", "┐", "┘", "└"},
-    --   preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
-    -- },
-
     -- preview = false,
     prompt_position = 'bottom',
     prompt_prefix = " Search:  ",

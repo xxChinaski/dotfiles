@@ -121,6 +121,7 @@ require("catppuccin").setup({
 	},
 	color_overrides = {},
 	custom_highlights = {
+    -- BASE --
     CursorLine = { bg = cp.base}, -- Screen-line at the cursor, when 'cursorline' is secp.  Low-priority if forecrust (ctermfg OR guifg) is not secp.
 		CursorLineNr = { fg = cp.yellow, bg = cp.base2},
 		FloatBorder = { fg = cp.base2 },
