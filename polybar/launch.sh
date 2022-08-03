@@ -15,6 +15,7 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 0.1; done
 echo "---" | tee -a /tmp/polybar1.log
 # polybar one 2>&1 | tee -a /tmp/polybar1.log & disown
 polybar two 2>&1 | tee -a /tmp/polybar1.log & disown
+# polybar main-i3-bar 2>&1 | tee -a /tmp/polybar1.log & disown
 # polybar cnt 2>&1 | tee -a /tmp/polybar2.log & disown
 # polybar lft 2>&1 | tee -a /tmp/polybar1.log & disown
 # polybar rgt 2>&1 | tee -a /tmp/polybar3.log & disown

@@ -1,44 +1,23 @@
-# Copyright (c) 2010 Aldo Cortesi
-# Copyright (c) 2010, 2014 dequis
-# Copyright (c) 2012 Randall Ma
-# Copyright (c) 2012-2014 Tycho Andersen
-# Copyright (c) 2012 Craig Barnes
-# Copyright (c) 2013 horsik
-# Copyright (c) 2013 Tao Sauvage
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
 import os
-import re
-import socket
 import subprocess
-
-from libqtile import qtile
-from libqtile import bar, layout, widget, hook
-from libqtile.config import Click, Drag, Group, KeyChord, Key, Match, Screen, ScratchPad, DropDown
+# from libqtile import qtile
+from libqtile import layout, hook
+from libqtile import bar, widget
+from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown
+# from libqtile.config import KeyChord
 from libqtile.command import lazy
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
-from typing import List
+# from libqtile.utils import guess_terminal
+# from typing import List
+from qtile_extras import widget
+from qtile_extras.widget.decorations import RectDecoration
+# from qtile_extras.widget.decorations import BorderDecoration
+
+# local
+from modules.widgets import *
 
 mod = "mod4"
 mod1 = "mod1"
-# terminal = guess_terminal()
 terminal = 'kitty'
 browser = "qutebrowser"
 file_manager = terminal + " -e vifm"
@@ -72,30 +51,7 @@ keys = [
     Key([mod, "control"], "l", lazy.layout.grow_right()),
     Key([mod, "shift"], "n", lazy.layout.normalize()),
 
-    # #==========================my qtile ============================================
-    # Key([mod, "shift"], "h", lazy.layout.swap_left(), desc="Move window to the left"),
-    # Key([mod, "shift"], "l", lazy.layout.swap_right(), desc="Move window to the right"),
-    # Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
-    # Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
-    # Key([mod, "shift"], "space", lazy.layout.flip(), desc="Flip layout"),
-    #
-    # # Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
-    # # Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
-    # # Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
-    # # Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
-    # # Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
-    #
-    # Key([mod, "control"], "h", lazy.layout.grow(), desc="Grow window to the left"),
-    # Key([mod, "control"], "l", lazy.layout.shrink(), desc="Grow window to the right"),
-    # Key([mod, "control"], "j", lazy.layout.normalize(), desc="Grow window down"),
-    # Key([mod, "control"], "k", lazy.layout.maximize(), desc="Grow window up"),
-    # #------------------------------------------------------------------------------
-    Key([mod], "F1", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen for pane in focus"),
-
-    # Toggle between split and unsplit sides of stack.
-    # Split = all windows displayed
-    # Unsplit = 1 window displayed, like Max layout, but still with
-    # multiple stack panes
+    Key([mod], "z", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen for pane in focus"),
     Key(
         [mod, "shift"],
         "Return",
@@ -107,20 +63,6 @@ keys = [
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    # Key([mod, "shift"], "e", lazy.spawn(gui_file_manager)), # run PCmanFM
-    # Key([mod], "e", lazy.spawn(file_manager)), # run VIFM
-    # Key([mod], "r", lazy.spawn('rofi -show drun')), # run Rofi
-    # Key([mod], "m", lazy.spawn(cmus)), # run cmus music player
-    # Key([mod], "b", lazy.spawn(browser)), # run FIREFOX 
-    # Key([mod], "p", lazy.spawn(mpv)), # run mpv video player  
-    # Key([mod], "Print", lazy.spawn('scrot "%Y-%m-%d_$wx$h.png" -e "optipng $f"')), # run FIREFOX 
-
-    # KeyChords ==========================
-    # KeyChord([mod], 'r', [
-    #              Key([], 'r', lazy.spawn('rofi -show drun')), # run app
-    #              Key([], 'e', lazy.spawn('rofiedit')), # edit confi:s
-    #              Key([], 'q', lazy.spawn('powermenu')), # power mend
-    #          ]),
 ]
 
 cats = [
@@ -153,6 +95,7 @@ thm_pink = cats[3]
 thm_blue = cats[10]
 thm_green = cats[8]
 bgTrans = "#00000000" 
+# bgTrans = "#11111b" 
 
 groups = [
     Group(
@@ -219,24 +162,18 @@ groups = [
 
 for i in groups:
     keys.extend([
-        # mod1 + letter of group = switch to group
         Key(
             [mod],
             i.name,
             lazy.group[i.name].toscreen(),
             desc="Switch to group {}".format(i.name),
         ),
-        # mod1 + shift + letter of group = switch to & move focused window to group
         Key(
             [mod, "shift"],
             i.name,
             lazy.window.togroup(i.name, switch_group=True),
             desc="Switch to & move focused window to group {}".format(i.name),
         ),
-        # Or, use below if you prefer not to switch to that group.
-        # # mod1 + shift + letter of group = move focused window to group
-        # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-        #     desc="move focused window to group {}".format(i.name)),
         Key([mod1, 'control'], '1', lazy.group['scratchpad'].dropdown_toggle('term')),
         Key([mod1, 'control'], '2', lazy.group['scratchpad'].dropdown_toggle('vifm')),
         Key([mod1, 'control'], '3', lazy.group['scratchpad'].dropdown_toggle('cmus')),
@@ -261,8 +198,6 @@ layout_theme = {
         "border_width": 2,
         "single_border_width": 0,
         "margin": 10,
-        "margin_on_single": 25,
-        # "border_focus": "#a6adc8",
         "border_focus": "#45475a",
         "border_normal": bgColor,
         }
@@ -278,8 +213,9 @@ layouts = [
     layout.Bsp(**layout_theme,
                fair=False,
                grow_amount=2,
+               margin_on_single=10,
                ),
-    layout.Stack(num_stacks=1, margin=10, border_focus="#1E1E2E"),
+    layout.Stack(num_stacks=1, margin=0, border_focus="#1E1E2E", margin_on_single=0),
     # layout.Slice(**layout_theme),
     # Try more layouts by unleashing below layouts.
     # layout.Columns(**layout_theme,
@@ -296,7 +232,7 @@ layouts = [
 
 colors = [
           ["#0b151ea6", "#0b151ea6"],
-          ["#1c1f24", "#1c1f24"],
+          ["#2e2e3e", "#2e2e3e"],
           ["#c0caf5", "#c0caf5"],
           ["#ff6c6b", "#ff6c6b"],
           ["#98be65", "#98be65"],
@@ -307,109 +243,69 @@ colors = [
           ["#a9a1e1", "#a9a1e1"]]
 
 widget_defaults = dict(
-    font="Ubuntu Nerd Font",
-    # font="JetBrains Nerd Font",
-    fontsize=14,
+    font="UbuntuMono Nerd Font",
+    fontsize=15.5,
     padding=5,
-    background=bgColor,
+    # background=bgColor,
+    background=bgTrans,
     foreground=cats[0],
 )
 extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-         # top=bar.Bar(
-         #     [
-         #         widget.Sep(
-         #                foreground="#96CDFB",
-         #                linewidth=5,
-         #                size_percent=200,
-         #                ),
-         #         widget.CPU(
-         #            format = '  {load_percent} %' ,
-         #        ),
-         #         widget.Spacer(
-         #             background = bgTrans,
-         #             ),
-         #         widget.GroupBox(
-         #             highlight_method = 'text',
-         #             center_aligned = 'true',
-         #             this_current_screen_border="#abe9b3",
-         #             inactive = "#1e1e2e",
-         #             active = "#96cdfb",
-         #             background = bgTrans,
-         #             borderwidth=2,
-         #             margin=4,
-         #             fontsize = 14,
-         #             rounded = True,
-         #             ),
-         #         widget.Spacer(
-         #             background = bgTrans,
-         #             ),
-         #         widget.Chord(
-         #             chords_colors={
-         #                 "launch": ("#ff0000", "#ffffff"),
-         #             },
-         #             name_transform=lambda name: name.upper(),
-         #         ),
-         #         widget.Net(
-         #             interface='all',
-         #             format = 'Net:{down}',
-         #             background = bgColor,
-         #             ),
-         #         widget.Sep(
-         #                foreground="#96CDFB",
-         #                line_width=2,
-         #                size_percent=50,
-         #                ),
-         #         widget.Cmus(
-         #            background = "#F28FAD",
-         #            foreground = bgColor,
-         #            play_color = bgColor,
-         #        ),
-         #         widget.Sep(
-         #                background=bgTrans,
-         #                foreground=bgTrans,
-         #                line_width=15,
-         #                padding=10,
-         #                size_percent=50,
-         #                ),
-         #        widget.TextBox(
-         #            text="",
-         #            foreground="#F28FAD",
-         #            background=bgTrans,
-         #            fontsize=18,
-         #            padding=-1,
-         #        ),
-         #         widget.Volume(
-         #            fmt = '墳 {}',
-         #            foreground = bgColor,
-         #            background = "#F28FAD",
-         #                ),
-         #        widget.TextBox(
-         #            text="  ",
-         #            # font="Font Awesome 6 Free Solid",
-         #            foreground="#F28FAD",
-         #            background=bgTrans,
-         #            fontsize=18,
-         #            padding=0,
-         #        ),
-         #         widget.Clock(
-         #             format="%b %d, %a %I:%M %p",
-         #             foreground = bgColor,
-         #             background = "#ddb6f2",
-         #             ),
-         #         widget.Sep(
-         #                foreground="#96CDFB",
-         #                linewidth=5,
-         #                size_percent=200,
-         #                ),
-         #     ],
-         #     21,
-         #     background="#0b151ea6",
-         # ),
+        # top=bar.Gap(44),
+        top=bar.Bar(
+            [ 
+            *gen_net(),
+            *gen_cpu(),
+
+            # Sound
+            w_volume_icon,
+            separator_sm(),
+            w_volume,
+
+            # Left spacer
+            gen_spacer(),
+            
+            widget.GroupBox(
+                 highlight_method = 'text',
+                 center_aligned = 'true',
+                 this_current_screen_border="#abe9b3",
+                 inactive = "#2e2e3e",
+                 active = "#96cdfb",
+                 background = bgTrans,
+                 borderwidth=2,
+                 margin=4,
+                 fontsize = 14,
+                 rounded = True,
+                 ),
+            # Right spacer
+            gen_spacer(),
+
+            separator(),
+
+            # Keyboard
+            *gen_keyboard(),
+            # # Wlan
+            # *w_wlan,
+
+            # Clock
+            *gen_clock(),
+            ],
+            30,
+            background="#00000000",
+            margin=[0,25,15,25],
+        ),
+        right=bar.Gap(15),
+        bottom=bar.Gap(15),
+        left=bar.Gap(15),
         # wallpaper='~/Downloads/wallpapers/girl.png',
-        wallpaper='~/Downloads/wallpapers/sakura.jpg',
+        # wallpaper='~/Downloads/wallpapers/sakura.jpg',
+        # wallpaper='~/Downloads/wallpapers/cat_CP77_my.png',
+        # wallpaper='~/Downloads/wallpapers/alena-aenami-cloud-sunset.jpg',
+        # wallpaper='~/Downloads/wallpapers/nsch.png',
+        wallpaper='~/Downloads/wallpapers/pink3big.png',
         wallpaper_mode='fill',
     ),
 ]
@@ -453,7 +349,7 @@ wl_input_rules = None
 def autostart():
     home = os.path.expanduser('~')
     subprocess.run([home + '/.config/qtile/autostart.sh'])
-    subprocess.run([home + '/.config/polybar/launch.sh'])
+    # subprocess.run([home + '/.config/polybar/launch.sh'])
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the

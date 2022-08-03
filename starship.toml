@@ -28,7 +28,8 @@ format = '[  ]($style)'
 [directory]
 style = "fg:#96cdfb"
 format = "[ in ](fg:#988ba2)[$path ]($style bold)"
-truncation_length = 3
+truncation_length = 8 
+truncate_to_repo = true
 truncation_symbol = "…/"
 
 # Here is how you can shorten some long paths by text replacement
