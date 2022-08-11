@@ -522,5 +522,5 @@ c.downloads.location.directory = '~/Downloads/'
 config.bind('M', 'hint links spawn mpv {hint-url}')
 config.bind('t', 'set-cmd-text -s :open -t')
 config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
-
+#
 # config.set("colors.webpage.darkmode.enabled", True)

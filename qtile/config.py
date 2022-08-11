@@ -1,9 +1,9 @@
 import os
 import subprocess
-# from libqtile import qtile
+from libqtile import qtile
 from libqtile import layout, hook
 from libqtile import bar, widget
-from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown
+from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown, EzKey
 # from libqtile.config import KeyChord
 from libqtile.command import lazy
 from libqtile.lazy import lazy
@@ -27,6 +27,7 @@ mpv =  "mpv"
 picom = terminal + " -e picom --experimental-backends --daemon"
 
 keys = [
+    Key([mod], "i",  lazy.toggle_layout('Max')),
     Key([mod], "Up", lazy.layout.increase_margin(), desc="Move focus to left"),
     Key([mod], "Down", lazy.layout.decrease_magrin(), desc="Move focus to left"),
     # Switch between windows
@@ -49,9 +50,10 @@ keys = [
     Key([mod, "control"], "k", lazy.layout.grow_up()),
     Key([mod, "control"], "h", lazy.layout.grow_left()),
     Key([mod, "control"], "l", lazy.layout.grow_right()),
+    Key([mod, "control"], "n", lazy.hide_show_bar()),
+    Key([mod], "z", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen for pane in focus"),
     Key([mod, "shift"], "n", lazy.layout.normalize()),
 
-    Key([mod], "z", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen for pane in focus"),
     Key(
         [mod, "shift"],
         "Return",
@@ -95,7 +97,6 @@ thm_pink = cats[3]
 thm_blue = cats[10]
 thm_green = cats[8]
 bgTrans = "#00000000" 
-# bgTrans = "#11111b" 
 
 groups = [
     Group(
@@ -133,7 +134,6 @@ groups = [
         "7",
         label='',
         layout='Bsp',
-        matches=[Match(wm_class=["Figma"])],
     ),
     Group(
         "8",
@@ -147,6 +147,7 @@ groups = [
         "9",
         label='',
         layout='Bsp',
+        matches=[Match(wm_class=["Figma"])],
     ),
     Group(
         "0",
@@ -154,11 +155,6 @@ groups = [
         layout='Bsp',
     ),
 ]
-#
-# from libqtile.dgroups import simple_key_binder
-# dgroups_key_binder = simple_key_binder("mod4")
-
-# groups = [Group(i) for i in "1234567890"]
 
 for i in groups:
     keys.extend([
@@ -184,7 +180,7 @@ for i in groups:
 
 groups.append(
    ScratchPad('scratchpad', {
-       # DropDown('term', 'kitty', opacity=1, height=0.5, width=1, x=0, y=-0.025),
+       # DropDown('term', 'kitty', opacity=1, height=0.5, width=1, x=0, y=0.5),
        DropDown('term', 'kitty', opacity=1, height=0.5, width=0.5, x=0.25, y=0.25),
        DropDown('vifm', 'kitty -e vifm', opacity=1, height=0.5, width=0.5, x=0.25, y=0.25),
        DropDown('cmus', 'kitty -e cmus', opacity=1, height=0.5, width=0.5, x=0.25, y=0.25),
@@ -197,8 +193,9 @@ groups.append(
 layout_theme = {
         "border_width": 2,
         "single_border_width": 0,
-        "margin": 10,
+        "margin": 5,
         "border_focus": "#45475a",
+        # "border_focus": "#96cdfb",
         "border_normal": bgColor,
         }
 
@@ -206,18 +203,17 @@ layouts = [
     # layout.MonadTall(
     #     **layout_theme,
     #     ),
-    # layout.Max(**layout_theme),
     # layout.Spiral(**layout_theme, ratio=0.5),
     # layout.MonadThreeCol(**layout_theme),
     # layout.Tile(**layout_theme),
     layout.Bsp(**layout_theme,
                fair=False,
                grow_amount=2,
-               margin_on_single=10,
+               margin_on_single=5,
                ),
-    layout.Stack(num_stacks=1, margin=0, border_focus="#1E1E2E", margin_on_single=0),
+    layout.Stack(num_stacks=1, margin=5, border_focus="#1E1E2E", margin_on_single=0),
+    # layout.Max(**layout_theme),
     # layout.Slice(**layout_theme),
-    # Try more layouts by unleashing below layouts.
     # layout.Columns(**layout_theme,
     #     split='false',
     #     num_collumns=1,
@@ -257,39 +253,23 @@ screens = [
         # top=bar.Gap(44),
         top=bar.Bar(
             [ 
+            # # Left spacer
+                *get_ws(),
+            gen_spacer(),
+            # Right spacer
+            gen_spacer(),
             *gen_net(),
+            separator(),
             *gen_cpu(),
-
+            separator(),
             # Sound
             w_volume_icon,
             separator_sm(),
             w_volume,
-
-            # Left spacer
-            gen_spacer(),
-            
-            widget.GroupBox(
-                 highlight_method = 'text',
-                 center_aligned = 'true',
-                 this_current_screen_border="#abe9b3",
-                 inactive = "#2e2e3e",
-                 active = "#96cdfb",
-                 background = bgTrans,
-                 borderwidth=2,
-                 margin=4,
-                 fontsize = 14,
-                 rounded = True,
-                 ),
-            # Right spacer
-            gen_spacer(),
-
             separator(),
-
             # Keyboard
             *gen_keyboard(),
-            # # Wlan
-            # *w_wlan,
-
+            separator(),
             # Clock
             *gen_clock(),
             ],
@@ -297,15 +277,16 @@ screens = [
             background="#00000000",
             margin=[0,25,15,25],
         ),
-        right=bar.Gap(15),
-        bottom=bar.Gap(15),
-        left=bar.Gap(15),
-        # wallpaper='~/Downloads/wallpapers/girl.png',
-        # wallpaper='~/Downloads/wallpapers/sakura.jpg',
-        # wallpaper='~/Downloads/wallpapers/cat_CP77_my.png',
-        # wallpaper='~/Downloads/wallpapers/alena-aenami-cloud-sunset.jpg',
+        right=bar.Bar([], 15),
+        bottom=bar.Bar([], 15),
+        left=bar.Bar([], 15),
+        # right=bar.Gap(15),
+        # bottom=bar.Gap(15),
+        # left=bar.Gap(15),
+        # wallpaper='~/Pictures/cat/cat_nsch.png',
+        wallpaper='~/Downloads/wallpapers/wallpaper1.jpg',
         # wallpaper='~/Downloads/wallpapers/nsch.png',
-        wallpaper='~/Downloads/wallpapers/pink3big.png',
+        # wallpaper='~/Downloads/wallpapers/nsch2.png',
         wallpaper_mode='fill',
     ),
 ]

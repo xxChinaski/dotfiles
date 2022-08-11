@@ -1,20 +1,31 @@
+-- my line ----------
 local lualine = require('lualine')
 
--- Color table for highlights
--- stylua: ignore
+-- gruv
 local colors = {
-  -- bg       = '#20232800',
-  bg       = '#181825',
-  fg       = '#bcc0cc',
-  yellow   = '#f5e0dc',
-  cyan     = '#f5c2e7',
-  darkblue = '#7287fd',
-  green    = '#a6e3a1',
-  orange   = '#FF8800',
-  violet   = '#b4befe',
-  magenta  = '#cba6f7',
-  blue     = '#96cdfb',
-  red      = '#e5b4e2',
+  bgDeep       = '#1d2021',
+  -- bgBright = '#665c54',
+  -- bg       = '#3c3836',
+  bg       = '#282828',
+  -- bgBright = '#7c6f64',
+  -- bgBright = '#928374',
+  bgBright = '#a89984',
+  fg       = '#ebdbb2',
+  fg2       = '#a89984',
+  red       = '#cc241d',
+  redBright       = '#fb4934',
+  yellow   = '#d79921',
+  yellowBright   = '#fabd2f',
+  blue     = '#458588',
+  blueBright = '#83a598',
+  green    = '#98971a',
+  greenBright    = '#b8bb26',
+  orange   = '#d65d0e',
+  orangeBright   = '#fe8019',
+  purple   = '#b16286',
+  purpleBright   = '#d3869b',
+  aqua   = '#689d6a',
+  aquaBright   = '#8ec07c',
   gitRed      = '#ff0000',
 }
 
@@ -36,12 +47,10 @@ local conditions = {
 local config = {
   options = {
     -- Disable sections and component separators
+    globalstatus = true,
     component_separators = '',
     section_separators = '',
     theme = {
-      -- We are going to use lualine_c an lualine_x as left and
-      -- right section. Both are highlighted by c theme .  So we
-      -- are just setting default looks o statusline
       normal = { c = { fg = colors.fg, bg = colors.bg } },
       inactive = { c = { fg = colors.fg, bg = colors.bg } },
     },
@@ -71,26 +80,26 @@ local config = {
 local modeColor = function()
   -- auto change color according to neovims mode
   local mode_color = {
-    n = colors.blue,
-    i = colors.green,
-    v = colors.yellow,
-    [''] = colors.yellow,
-    V = colors.yellow,
+    n = colors.fg,
+    i = colors.orangeBright,
+    v = colors.blueBright,
+    [''] = colors.blueBright,
+    V = colors.blueBright,
     c = colors.magenta,
-    no = colors.yellow,
+    no = colors.blueBright,
     s = colors.orange,
     S = colors.orange,
     [''] = colors.orange,
-    ic = colors.yellow,
+    ic = colors.blueBright,
     R = colors.violet,
     Rv = colors.violet,
-    cv = colors.yellow,
-    ce = colors.yellow,
+    cv = colors.blueBright,
+    ce = colors.blueBright,
     r = colors.cyan,
     rm = colors.cyan,
     ['r?'] = colors.cyan,
-    ['!'] = colors.yellow,
-    t = colors.yellow,
+    ['!'] = colors.blueBright,
+    t = colors.blueBright,
   }
   return { fg = mode_color[vim.fn.mode()], gui = 'bold' }
 end
@@ -106,35 +115,20 @@ local function ins_right(component)
   table.insert(config.sections.lualine_x, component)
 end
 
-ins_left {
-  function()
-    return '▊'
-  end,
-  color = modeColor,
-  padding = { left = 0, right = 1 }, -- We don't need space before this
-}
 
-ins_left {
-  -- mode component
-  function()
-    return ' '
-  end,
-  color = modeColor,
-  padding = { right = 1 },
-}
+-- ins_left {
+--   -- mode component
+--   function()
+--     return ' '
+--   end,
+--   color = modeColor,
+--   padding = { right = 1 },
+-- }
 
 ins_left {
   'filesize',
+  color = { fg = colors.fg2, bg = colors.bg, gui = '' },
   cond = conditions.buffer_not_empty,
-}
-
-ins_left {
-  -- mode component
-  function()
-    return ''
-  end,
-  color = { fg = "#2e2e3e"},
-  padding = 0,
 }
 
 ins_left {
@@ -142,27 +136,22 @@ ins_left {
   'filetype',
   -- icons_enabled = true, -- I think icons are cool but Eviline doesn't have them. sigh
   icon_only = true,
-  color = { fg = colors.fg, bg = "#2e2e3e", gui = '' },
+  color = { fg = colors.bg, bg = colors.bg, gui = '' },
 }
 
 ins_left {
   'filename',
   cond = conditions.buffer_not_empty,
-  -- color = modeColor,
-  color = { fg = colors.fg , bg = "#2e2e3e" }, -- Sets highlighting of component
+  color = modeColor,
+  -- color = { fg = colors.fg , bg = colors.bg, gui = 'bold' }, -- Sets highlighting of component
+  -- color = { fg = modeColor , bg = colors.bg, gui = 'bold' }, -- Sets highlighting of component
   path = 1,
 }
 
-ins_left {
-  -- mode component
-  function()
-    return ''
-  end,
-  color = { fg = "#2e2e3e"},
-  padding = 0,
+ins_left { 
+  'location',
+  color = { fg = colors.fg2, bg = colors.bg, gui = '' },
 }
-
-ins_left { 'location' }
 
 ins_left {
   'diagnostics',
@@ -184,29 +173,6 @@ ins_left {
   end,
 }
 
--- ins_left {
---   -- Lsp server name .
---   function()
---     local msg = 'No Active Lsp'
---     local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
---     local clients = vim.lsp.get_active_clients()
---     if next(clients) == nil then
---       return msg
---     end
---     for _, client in ipairs(clients) do
---       local filetypes = client.config.filetypes
---       if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
---         return client.name
---       end
---     end
---     return msg
---   end,
---   icon = ' ',
---   color = { fg = colors.fg, gui = '' },
--- }
-
--- Add components to right sections
-
 ins_right {
   'branch',
   icon = '',
@@ -225,22 +191,15 @@ ins_right {
   cond = conditions.hide_in_width,
 }
 
-ins_right{ 'progress', color = { fg = colors.fg, gui = 'bold' } }
+ins_right{ 'progress', color = { fg = colors.fg2, gui = 'bold' } }
 
 ins_right {
   'o:encoding', -- option component same as &encoding in viml
   fmt = string.upper, -- I'm not sure why it's upper case either ;)
   cond = conditions.hide_in_width,
-  color = { fg = colors.fg, gui = 'bold' },
-}
-
-ins_right {
-  function()
-    return '▊'
-  end,
-  color = modeColor,
-  padding = { left = 1 },
+  color = { fg = colors.fg2, gui = 'bold' },
 }
 
 -- Now don't forget to initialize lualine
 lualine.setup(config)
+

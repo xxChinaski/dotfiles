@@ -1,6 +1,8 @@
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
+
+
 -- Move to previous/next
 map('n', '<A-h>', '<Cmd>BufferPrevious<CR>', opts)
 map('n', '<A-l>', '<Cmd>BufferNext<CR>', opts)
@@ -39,4 +41,10 @@ map('n', '<A-c>', '<Cmd>BufferClose<CR>', opts)
 -- map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
 require'bufferline'.setup {
   -- auto_hide = true,
+  icon_separator_active = '',
+  icon_separator_inactive = '',
+  icon_close_tab = '',
+  icon_close_tab_modified = '<',
+
+  icon_pinned = '',
 }

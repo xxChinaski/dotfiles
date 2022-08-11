@@ -1,3 +1,6 @@
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-- original (almost) catppuccin ----------------------------------------------
 local cp = {
 	rosewater = "#F5E0DC",
 	flamingo = "#F2CDCD",
@@ -98,7 +101,7 @@ require("catppuccin").setup({
 		},
 		which_key = false,
 		indent_blankline = {
-			enabled = true,
+			enabled = false,
 			colored_indent_levels = false,
 		},
 		dashboard = true,
@@ -135,10 +138,10 @@ require("catppuccin").setup({
 		TelescopeSelectionCaret = { fg = cp.crust, bg =  cp.maroon},
 
     -- BARBAR --
-		BufferCurrent = { bg = cp.base, fg = cp.text},
-		BufferCurrentIndex = { bg = cp.base, fg = cp.blue },
-		BufferCurrentMod = { bg = cp.base, fg = cp.yellow },
-		BufferCurrentSign = { bg = cp.base, fg = cp.blue },
+		BufferCurrent = { bg = cp.crust, fg = cp.text},
+		BufferCurrentIndex = { bg = cp.crust, fg = cp.blue },
+		BufferCurrentMod = { bg = cp.crust, fg = cp.yellow },
+		BufferCurrentSign = { bg = cp.crust, fg = cp.blue },
 		BufferVisible = { bg = cp.crust, fg = cp.blue},
 		BufferVisibleIndex = { bg = cp.crust, fg = cp.blue },
 		BufferVisibleMod = { bg = cp.crust, fg = cp.yellow },
@@ -154,6 +157,5 @@ require("catppuccin").setup({
 		BufferTabpageFill = { bg = cp.crust, fg = cp.blue },
   },
 })
-
 vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 vim.cmd [[colorscheme catppuccin]]

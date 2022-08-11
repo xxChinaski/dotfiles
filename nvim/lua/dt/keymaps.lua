@@ -77,8 +77,12 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 -- keymap("n", "<leader>tt", "<cmd>lua require'telescope.builtin'.live_grep(require('telescope.themes').get_ivy())<cr>", opts)
 -- keymap("n", "<leader>tgc", "<cmd>lua require'telescope.builtin'.git_commits(require('telescope.themes').get_ivy())<cr>", opts)
 -- keymap("n", "<leader>tgs", "<cmd>lua require'telescope.builtin'.git_status(require('telescope.themes').get_ivy())<cr>", opts)
-keymap("n", "<leader><leader>", "<cmd>Telescope find_files<cr>", opts)
+keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts)
 keymap("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts)
 keymap("n", "<leader>gc", "<cmd>Telescope git_commits<cr>", opts)
 keymap("n", "<leader>t", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "<leader>sf", "<cmd>Telescope current_buffer_fuzzy_find<cr>", opts)
+
+-- HARPOOOOOOOOOOOOOOOONNN ----------------------------------------------------
+keymap("n", "<leader><leader>", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", opts)
+keymap("n", "<leader>ha", "<cmd>lua require('harpoon.mark').add_file()<cr>", opts)

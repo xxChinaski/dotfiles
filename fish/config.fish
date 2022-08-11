@@ -5,7 +5,7 @@ if status is-interactive
 
     alias ll="lsd -lait --group-dirs first"
     alias llt="lsd -lait --group-dirs first --tree"
-    alias vi="nvim"
+    alias v="nvim"
     alias arU="sudo pacman -Su"
     alias mt="neomutt"
     alias ms="mdbook serve -p 8000"

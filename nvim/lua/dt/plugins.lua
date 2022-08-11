@@ -57,14 +57,26 @@ return packer.startup(function(use)
     use 'norcalli/nvim-colorizer.lua'
     use "lewis6991/impatient.nvim"
     use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight ???
+    -- NeoSolarized colorscheme
+    use {
+      'svrana/neosolarized.nvim',
+      requires = { 'tjdevries/colorbuddy.nvim' }
+    }
     -- Catppuccin colorscheme
     use({
         "catppuccin/nvim",
         as = "catppuccin"
     })
+    use 'https://gitlab.com/__tpb/monokai-pro.nvim'
+    use({
+        'rose-pine/neovim',
+        as = 'rose-pine',
+        tag = 'v1.*',
+    })
 
+    use "ellisonleao/gruvbox.nvim"
     -- -- One Dark colorscheme
-    -- use 'navarasu/onedark.nvim'
+    use 'navarasu/onedark.nvim'
     -- Status line
     use "nvim-lualine/lualine.nvim"
     -- cmp plug
@@ -84,6 +96,7 @@ return packer.startup(function(use)
     use "williamboman/nvim-lsp-installer" -- simple to use language server isntaller
     use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
+    use 'ThePrimeagen/harpoon'
     -- -- Telescope
     use "nvim-telescope/telescope.nvim"
     use "nvim-telescope/telescope-media-files.nvim"
@@ -99,9 +112,9 @@ return packer.startup(function(use)
     -- Markdown VimWiki
     use "vimwiki/vimwiki"
 
-    -- Barbar
-  --
-    use "romgrk/barbar.nvim"
+    -- Statusline
+    use "romgrk/barbar.nvim" -- BarBar line (my default)
+    -- use 'akinsho/nvim-bufferline.lua' -- Bufferline (dev as life)
 
     -- Easymotion
     use {
@@ -113,7 +126,9 @@ return packer.startup(function(use)
         end
     }
 
+        -- Candy --
     use 'karb94/neoscroll.nvim'
+    use "Pocco81/true-zen.nvim"
    -- GIT --
     use {
       'lewis6991/gitsigns.nvim',
