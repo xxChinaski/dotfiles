@@ -20,7 +20,8 @@ menu(){
 }
 
 main(){
-    choice=$(menu | rofi -dmenu -theme-str '@import "editConfigs.rasi"'  | cut -d. -f1)
+    choice=$(menu | rofi -dmenu | cut -d. -f1)
+    # choice=$(menu | rofi -dmenu -theme-str '@import "editConfigs.rasi"'  | cut -d. -f1)
 
 	case $choice in
 		1) $myTerm -e sh -c "sleep 0.1 ; cd $HOME/.config/kitty/; $myEdit kitty.conf" ;;

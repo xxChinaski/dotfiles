@@ -1,5 +1,4 @@
 format = """
-$username\
 $directory\
 $git_branch\
 $git_status\
@@ -18,17 +17,19 @@ $time[» ](bold green)
 # add_newline = false
 
 # You can also replace your username with a neat symbol like  to save some space
-[username]
-show_always = true
-style_user = "fg:#ccb7f2"
-style_root = "fg:#ccb7f2"
-# format = '[ $user@linux:  ]($style)'
-format = '[  ]($style)'
+# [username]
+# show_always = true
+# style_user = "fg:#ccb7f2"
+# style_root = "fg:#ccb7f2"
+# # format = '[ $user@linux:  ]($style)'
+# format = '[  ]($style)'
 
 [directory]
-style = "fg:#96cdfb"
-format = "[ in ](fg:#988ba2)[$path ]($style bold)"
-truncation_length = 8 
+# style = "fg:#96cdfb"
+# style = "fg:#708183"
+style = "fg:#259185"
+format = "[$path ]($style)"
+truncation_length = 3
 truncate_to_repo = true
 truncation_symbol = "…/"
 
@@ -47,46 +48,49 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = 'שׂ '
-style = "fg:#ddb6f2"
+# style = "fg:#ddb6f2"
+style = "fg:#2075c7"
 format = '[[on](fg:#988ba2) $symbol$branch](bold $style)'
 
 [git_status]
-style = "fg:#f38ba8"
+# style = "fg:#f38ba8"
+style = "fg:#bd3612"
 format = '[($all_status$ahead_behind)]($style)'
 
+# style = "fg:#abe9b3" -- def green
 [haskell]
 symbol = " "
-style = "fg:#abe9b3"
+style = "fg:#728905"
 format = '[[ via ](fg:#988ba2)$symbol($version) ](bold $style)'
 
 [lua]
 symbol = " "
-style = "fg:#abe9b3"
+style = "fg:#728905"
 format = '[[ via ](fg:#988ba2)$symbol($version) ](bold $style)'
 
 [python]
 symbol = " "
-style = "fg:#abe9b3"
+style = "fg:#728905"
 format = '[[ via ](fg:#988ba2)$symbol($version) ](bold $style)'
 
 [java]
 symbol = " "
-style = "fg:#abe9b3"
+style = "fg:#728905"
 format = '[[ via ](fg:#988ba2)$symbol($version) ](bold $style)'
 
 [php]
 symbol = "  "
-style = "fg:#abe9b3"
+style = "fg:#728905"
 format = '[[ via ](fg:#988ba2)$symbol($version) ](bold $style)'
 
 [nodejs]
 symbol = " "
-style = "fg:#abe9b3"
+style = "fg:#728905"
 format = '[[ via ](fg:#988ba2)$symbol($version) ](bold $style)'
 
 [rust]
 symbol = " "
-style = "fg:#abe9b3"
+style = "fg:#728905"
 format = '[[ via ](fg:#988ba2)$symbol($version) ](bold $style)'
 
 [cmd_duration]
@@ -95,5 +99,5 @@ format = '[ took ](fg:#988ba2)[$duration]($style)'
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = ""
+style = "fg:#e9e2cb"
 format = '[[ ⚡](fg:#fae3b0)$time ]($style)'

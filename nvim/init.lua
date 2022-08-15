@@ -2,23 +2,10 @@ require "dt.options"
 require "dt.keymaps"
 require "dt.plugins"
 require "dt.barbar" -- Integrated into solarized theme config file
--- require "dt.bufferline"
--- themes ---------------------------------------------------------------------
--- require "dt.themes.rose"
--- require "dt.themes.monokai"
--- require "dt.lines.onedark"
--- require "dt.themes.onedark"
--- require "dt.lines.onedark"
-require "dt.themes.solarized"
-require "dt.lines.solarized"
--- require "dt.themes.cat"
--- require "dt.lines.cat"
--- require "dt.themes.gruv"
--- require "dt.lines.gruv"
--------------------------------------------------------------------------------
 require "dt.telescope"
 require "dt.cmp"
 require "dt.lsp"
+require "dt.lspsaga"
 require "dt.treesitter"
 require "dt.autopairs"
 require "dt.comment"
@@ -31,3 +18,12 @@ require "dt.hop"
 require "dt.null-ls"
 require "dt.coloraizer"
 require "dt.scroll"
+-- themes ---------------------------------------------------------------------
+require "dt.themes.solarized"
+require "dt.lines.solarized"
+--[[ require "dt.themes.tokyo" ]]
+--[[ require "dt.themes.cat" ]]
+--[[ require "dt.lines.cat" ]]
+--[[ require "dt.themes.gruv" ]]
+--[[ require "dt.lines.gruv" ]]
+-------------------------------------------------------------------------------

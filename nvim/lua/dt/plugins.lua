@@ -67,16 +67,9 @@ return packer.startup(function(use)
         "catppuccin/nvim",
         as = "catppuccin"
     })
-    use 'https://gitlab.com/__tpb/monokai-pro.nvim'
-    use({
-        'rose-pine/neovim',
-        as = 'rose-pine',
-        tag = 'v1.*',
-    })
 
     use "ellisonleao/gruvbox.nvim"
-    -- -- One Dark colorscheme
-    use 'navarasu/onedark.nvim'
+    use 'folke/tokyonight.nvim'
     -- Status line
     use "nvim-lualine/lualine.nvim"
     -- cmp plug
@@ -95,6 +88,7 @@ return packer.startup(function(use)
     use "neovim/nvim-lspconfig" --enable LSP
     use "williamboman/nvim-lsp-installer" -- simple to use language server isntaller
     use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+    use 'glepnir/lspsaga.nvim' -- LSP UI
 
     use 'ThePrimeagen/harpoon'
     -- -- Telescope
@@ -113,9 +107,9 @@ return packer.startup(function(use)
     use "vimwiki/vimwiki"
 
     -- Statusline
-    use "romgrk/barbar.nvim" -- BarBar line (my default)
-    -- use 'akinsho/nvim-bufferline.lua' -- Bufferline (dev as life)
-
+    use 'kdheepak/tabline.nvim' -- tab and buffer line
+    --[[ use 'kazhala/close-buffers.nvim' ]]
+    use 'johann2357/nvim-smartbufs'
     -- Easymotion
     use {
         'phaazon/hop.nvim',

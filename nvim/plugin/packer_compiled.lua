@@ -89,15 +89,15 @@ _G.packer_plugins = {
     path = "/home/dt/.local/share/nvim/site/pack/packer/start/alpha-nvim",
     url = "https://github.com/goolord/alpha-nvim"
   },
-  ["barbar.nvim"] = {
-    loaded = true,
-    path = "/home/dt/.local/share/nvim/site/pack/packer/start/barbar.nvim",
-    url = "https://github.com/romgrk/barbar.nvim"
-  },
   catppuccin = {
     loaded = true,
     path = "/home/dt/.local/share/nvim/site/pack/packer/start/catppuccin",
     url = "https://github.com/catppuccin/nvim"
+  },
+  ["close-buffers.nvim"] = {
+    loaded = true,
+    path = "/home/dt/.local/share/nvim/site/pack/packer/start/close-buffers.nvim",
+    url = "https://github.com/kazhala/close-buffers.nvim"
   },
   ["cmp-buffer"] = {
     loaded = true,
@@ -165,15 +165,15 @@ _G.packer_plugins = {
     path = "/home/dt/.local/share/nvim/site/pack/packer/start/impatient.nvim",
     url = "https://github.com/lewis6991/impatient.nvim"
   },
+  ["lspsaga.nvim"] = {
+    loaded = true,
+    path = "/home/dt/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
+    url = "https://github.com/glepnir/lspsaga.nvim"
+  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/home/dt/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
-  },
-  ["monokai-pro.nvim"] = {
-    loaded = true,
-    path = "/home/dt/.local/share/nvim/site/pack/packer/start/monokai-pro.nvim",
-    url = "https://gitlab.com/__tpb/monokai-pro.nvim"
   },
   ["neoscroll.nvim"] = {
     loaded = true,
@@ -240,11 +240,6 @@ _G.packer_plugins = {
     path = "/home/dt/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
-  ["onedark.nvim"] = {
-    loaded = true,
-    path = "/home/dt/.local/share/nvim/site/pack/packer/start/onedark.nvim",
-    url = "https://github.com/navarasu/onedark.nvim"
-  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/dt/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -260,10 +255,10 @@ _G.packer_plugins = {
     path = "/home/dt/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
   },
-  ["rose-pine"] = {
+  ["tabline.nvim"] = {
     loaded = true,
-    path = "/home/dt/.local/share/nvim/site/pack/packer/start/rose-pine",
-    url = "https://github.com/rose-pine/neovim"
+    path = "/home/dt/.local/share/nvim/site/pack/packer/start/tabline.nvim",
+    url = "https://github.com/kdheepak/tabline.nvim"
   },
   ["telescope-media-files.nvim"] = {
     loaded = true,
@@ -279,6 +274,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/dt/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
+  },
+  ["tokyonight.nvim"] = {
+    loaded = true,
+    path = "/home/dt/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
   },
   ["true-zen.nvim"] = {
     loaded = true,

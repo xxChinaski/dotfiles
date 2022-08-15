@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 local dashboard = require("alpha.themes.dashboard")
-
+--
 dashboard.section.buttons.val = {
 	dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
 	dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
@@ -14,7 +14,7 @@ dashboard.section.buttons.val = {
 	dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <CR>"),
 	dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
 }
-
+--
 dashboard.section.header.val = {
 [[████████╗    ██╗██████╗  █████╗ ███╗  ██╗██╗██╗██╗]],
 [[╚══██╔══╝   ██╔╝██╔══██╗██╔══██╗████╗ ██║██║██║██║    ]],
@@ -66,3 +66,6 @@ dashboard.section.buttons.opts.hl = "Type"
 dashboard.opts.opts.noautocmd = true
 -- vim.cmd([[autocmd User AlphaReady echo 'ready']])
 alpha.setup(dashboard.opts)
+
+
+--[[ require'alpha'.setup(require'alpha.themes.startify'.config) ]]

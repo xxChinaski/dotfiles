@@ -2,6 +2,8 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
     set fish_greeting ""
     # set fish_vi_key_bindings
+    # export PATH=$PATH:/home/dt/.local/bin/
+    set -gx PATH ~/.local/bin $PATH
 
     alias ll="lsd -lait --group-dirs first"
     alias llt="lsd -lait --group-dirs first --tree"

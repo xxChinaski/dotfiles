@@ -5,6 +5,7 @@ local lualine = require('lualine')
 local colors = {
   bg       = '#002b36',
   bgbright = '#586e75',
+  --[[ bgbright = '#444444', ]]
   -- fg       = '#93a1a1',
   fg       = '#839496',
   fg2       =  '#eee8d5',
@@ -15,7 +16,7 @@ local colors = {
   orange   = '#cb4b16',
   violet   = '#6c71c4',
   magenta  = '#cba6f7',
-  blue     = '#268bd2',
+  blue     = '#2075c7',
   red      = '#dc322f',
   deepdark      = '#f38ba8',
   gitRed      = '#ff0000',
@@ -47,12 +48,19 @@ local config = {
       -- right section. Both are highlighted by c theme .  So we
       -- are just setting default looks o statusline
       -- normal = { c = { fg = colors.fg, bg = colors.bg } },
-      normal = { c = { fg = colors.fg, bg = colors.bg } },
-      inactive = { c = { fg = colors.fg, bg = colors.bg } },
+      normal = {
+        a = { fg = colors.fg2, bg = colors.blue },
+        b = { fg = colors.fg, bg = colors.bg },
+        c = { fg = colors.fg, bg = colors.bg },
+      },
+      inactive = {
+        c = { fg = colors.fg, bg = colors.bg },
+      },
     },
   },
   sections = {
     -- these are to remove the defaults
+    --[[ lualine_a = {require('tabline').tabline_buffers}, ]]
     lualine_a = {},
     lualine_b = {},
     lualine_y = {},
@@ -111,44 +119,24 @@ local function ins_right(component)
   table.insert(config.sections.lualine_x, component)
 end
 
-ins_left {
-  function()
-    return '▊'
-  end,
-  color = modeColor,
-  padding = { left = 0, right = 1 }, -- We don't need space before this
-}
+--[[ ins_left { ]]
+--[[   function() ]]
+--[[     return '▊' ]]
+--[[   end, ]]
+--[[   color = modeColor, ]]
+--[[   padding = { left = 0, right = 1 }, -- We don't need space before this ]]
+--[[ } ]]
 
-ins_left {
-  -- mode component
-  function()
-    return ' '
-  end,
-  color = modeColor,
-  padding = { right = 1 },
-}
+--[[ ins_left { ]]
+--[[   -- mode component ]]
+--[[   function() ]]
+--[[     return ' ' ]]
+--[[   end, ]]
+--[[   color = modeColor, ]]
+--[[   padding = { right = 1 }, ]]
+--[[ } ]]
 
-ins_left {
-  'filesize',
-  cond = conditions.buffer_not_empty,
-}
 
-ins_left {
-  -- mode component
-  function()
-    return ''
-  end,
-  color = { fg = colors.bgbright},
-  padding = 0,
-}
-
-ins_left {
-  fmt = string.upper,
-  'filetype',
-  -- icons_enabled = true, -- I think icons are cool but Eviline doesn't have them. sigh
-  icon_only = true,
-  color = { fg = colors.fg, bg = colors.bgbright, gui = '' },
-}
 
 ins_left {
   'filename',
@@ -161,10 +149,64 @@ ins_left {
 ins_left {
   -- mode component
   function()
-    return ''
+    return ''
   end,
   color = { fg = colors.bgbright},
   padding = 0,
+}
+
+ins_left {
+  -- mode component
+  function()
+    return ''
+  end,
+  color = { fg = colors.bg, bg = colors.blue},
+  padding = 0,
+}
+--[[ ins_left { ]]
+--[[   'branch', ]]
+--[[   icon = '', ]]
+--[[   color = { fg = colors.violet, gui = 'bold' }, ]]
+--[[ } ]]
+--[[ ins_left { ]]
+--[[   -- mode component ]]
+--[[   function() ]]
+--[[     return '' ]]
+--[[   end, ]]
+--[[   color = { fg = colors.blue, bg = colors.bgbright}, ]]
+--[[   padding = 0, ]]
+--[[ } ]]
+
+ins_left {
+  'branch',
+  icon = '',
+  color = { fg = colors.fg2, bg = colors.blue, gui = 'bold' },
+}
+
+ins_left {
+  -- mode component
+  function()
+    return ''
+  end,
+  color = { fg = colors.blue, bg = colors.bg},
+  padding = 0,
+}
+
+ins_right {
+  'diff',
+  -- Is it me or the symbol for modified us really weird
+	symbols = { added = "  ", modified = "  ", removed = "  " }, -- changes diff symbols
+  diff_color = {
+    added = { fg = colors.green },
+    modified = { fg = colors.yellow },
+    removed = { fg = colors.red },
+  },
+  cond = conditions.hide_in_width,
+}
+
+ins_left {
+  'filesize',
+  cond = conditions.buffer_not_empty,
 }
 
 ins_left { 'location' }
@@ -172,7 +214,7 @@ ins_left { 'location' }
 ins_left {
   'diagnostics',
   sources = { 'nvim_diagnostic' },
-  symbols = { error = ' ', warn = ' ', info = ' ' },
+  symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
   diagnostics_color = {
     color_error = { fg = colors.red },
     color_warn = { fg = colors.yellow },
@@ -212,22 +254,29 @@ ins_left {
 
 -- Add components to right sections
 
+--[[ ins_right { ]]
+--[[   'branch', ]]
+--[[   icon = '', ]]
+--[[   color = { fg = colors.violet, gui = 'bold' }, ]]
+--[[ } ]]
+--[[]]
+--[[ ins_right { ]]
+--[[   'diff', ]]
+--[[   -- Is it me or the symbol for modified us really weird ]]
+--[[ 	symbols = { added = "  ", modified = "  ", removed = "  " }, -- changes diff symbols ]]
+--[[   diff_color = { ]]
+--[[     added = { fg = colors.green }, ]]
+--[[     modified = { fg = colors.yellow }, ]]
+--[[     removed = { fg = colors.red }, ]]
+--[[   }, ]]
+--[[   cond = conditions.hide_in_width, ]]
+--[[ } ]]
 ins_right {
-  'branch',
-  icon = '',
-  color = { fg = colors.violet, gui = 'bold' },
-}
-
-ins_right {
-  'diff',
-  -- Is it me or the symbol for modified us really weird
-	symbols = { added = "  ", modified = "  ", removed = "  " }, -- changes diff symbols
-  diff_color = {
-    added = { fg = colors.green },
-    modified = { fg = colors.yellow },
-    removed = { fg = colors.red },
-  },
-  cond = conditions.hide_in_width,
+  fmt = string.upper,
+  'filetype',
+  icons_enabled = true, -- I think icons are cool but Eviline doesn't have them. sigh
+  --[[ icon_only = true, ]]
+  color = { fg = colors.fg, bg = colors.bg, gui = '' },
 }
 
 ins_right{ 'progress', color = { fg = colors.fg, gui = 'bold' } }

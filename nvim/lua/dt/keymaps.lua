@@ -7,8 +7,8 @@ local keymap = vim.api.nvim_set_keymap
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.mapleader = ";"
+vim.g.maplocalleader = ";"
 
 -- Modes
 --   normal_mode = "n",
@@ -83,6 +83,9 @@ keymap("n", "<leader>gc", "<cmd>Telescope git_commits<cr>", opts)
 keymap("n", "<leader>t", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "<leader>sf", "<cmd>Telescope current_buffer_fuzzy_find<cr>", opts)
 
+-- increment and decrement
+keymap("n", "+", "<C-a>", opts)
+keymap("n", "-", "<C-x>", opts)
 -- HARPOOOOOOOOOOOOOOOONNN ----------------------------------------------------
 keymap("n", "<leader><leader>", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", opts)
 keymap("n", "<leader>ha", "<cmd>lua require('harpoon.mark').add_file()<cr>", opts)

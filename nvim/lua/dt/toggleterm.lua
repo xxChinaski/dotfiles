@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 toggleterm.setup({
-	size = 20,
+	size = 15,
 	open_mapping = [[<c-\>]],
 	hide_numbers = true,
 	shade_filetypes = {},
@@ -13,7 +13,7 @@ toggleterm.setup({
 	start_in_insert = true,
 	insert_mappings = true,
 	persist_size = true,
-	direction = "float",
+	-- direction = "float",
   highlights = {
     -- highlights which map to a highlight group name and a table of it's values
     -- NOTE: this is only a subset of values, any group placed here will be set for the terminal window split
@@ -29,7 +29,7 @@ toggleterm.setup({
       -- guifg = "#F9E2AF",
     },
   },
-	-- direction = "horizontal",
+	direction = "horizontal",
 	close_on_exit = true,
 	shell = vim.o.shell,
 	float_opts = {

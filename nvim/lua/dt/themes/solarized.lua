@@ -15,18 +15,8 @@ local styles = cb.styles
 Color.new('black', '#000000')
 Group.new('CursorLine', colors.none, colors.base03, styles.NONE, colors.base1)
 Group.new('CursorLineNr', colors.yellow, colors.black, styles.NONE, colors.base1)
--- ColorColumn = { bg = cp.base }, -- used for the columns set with 'colorcolumn'
 Group.new('ColorColumn', colors.none, colors.base03, styles.NONE, colors.base1)
 Group.new('Visual', colors.none, colors.base03, styles.reverse)
-
---     -- BarBar customisation --
--- Group.new('BufferCurrent', colors.none, colors.base03, styles.reverse)
--- Group.new('BufferCurrentIndex', colors.none, colors.base03, styles.reverse)
--- Group.new('BufferCurrentMod', colors.none, colors.base03, styles.reverse)
--- Group.new('BufferCurrentSign', colors.none, colors.base03, styles.reverse)
--- Group.new('BufferTabpages', colors.none, colors.base03 )
--- Group.new('BufferTabpage', colors.none, colors.base03)
--- Group.new('BufferTabpageFill', colors.none, colors.base03 )
 
 local cError = groups.Error.fg
 local cInfo = groups.Information.fg
@@ -69,7 +59,6 @@ Color.new('solaryellow', '#b58900')
 Color.new('solarblue', '#268bd2')
 Color.new('solarmagenta', '#d33682')
 Color.new('solarred', '#dc322f')
--- Group.new('BufferCurrent', colors.none, colors.base03, styles.reverse)
 ----------------------------- fg ----------- bg ----------- style ------------
 Group.new('BufferCurrent', colors.solarfg2, colors.none)
 Group.new('BufferCurrentIndex', colors.solarfg2, colors.none)
@@ -78,23 +67,5 @@ Group.new('BufferCurrentSign', colors.cyan, colors.none)
 
 Group.new('BufferVisible', colors.solarblue, colors.none)
 Group.new('BufferVisibleIndex', colors.solarfg2, colors.none)
--- Group.new('BufferVisibleMod', colors.solarmagenta, colors.none)
 Group.new('BufferVisibleMod', colors.solarred, colors.none)
 Group.new('BufferVisibleSign', colors.cyan, colors.none)
--- BufferCurrent = { bg = cp.crust, fg = cp.text},
--- BufferCurrentIndex = { bg = cp.crust, fg = cp.blue },
--- BufferCurrentMod = { bg = cp.crust, fg = cp.yellow },
--- BufferCurrentSign = { bg = cp.crust, fg = cp.blue },
--- BufferVisible = { bg = cp.crust, fg = cp.blue},
--- BufferVisibleIndex = { bg = cp.crust, fg = cp.blue },
--- BufferVisibleMod = { bg = cp.crust, fg = cp.yellow },
--- BufferVisibleSign = { bg = cp.crust, fg = cp.blue },
--- BufferVisibleTarget = { bg = cp.crust, fg = cp.red },
--- BufferInactive = { bg = cp.crust, fg = cp.overlay0 },
--- BufferInactiveIndex = { bg = cp.crust, fg = cp.overlay0 },
--- BufferInactiveMod = { bg = cp.crust, fg = cp.yellow },
--- BufferInactiveSign = { bg = cp.crust, fg = cp.blue },
--- BufferInactiveTarget = { bg = cp.crust, fg = cp.red },
--- BufferTabpages = { bg = cp.crust, fg = cp.none },
--- BufferTabpage = { bg = cp.crust, fg = cp.blue },
--- BufferTabpageFill = { bg = cp.crust, fg = cp.blue },
