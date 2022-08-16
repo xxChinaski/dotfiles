@@ -25,5 +25,6 @@ require "dt.lines.solarized"
 --[[ require "dt.themes.cat" ]]
 --[[ require "dt.lines.cat" ]]
 --[[ require "dt.themes.gruv" ]]
+--[[ require "dt.lines.gruvy" ]]
 --[[ require "dt.lines.gruv" ]]
 -------------------------------------------------------------------------------

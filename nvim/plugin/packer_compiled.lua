@@ -94,11 +94,6 @@ _G.packer_plugins = {
     path = "/home/dt/.local/share/nvim/site/pack/packer/start/catppuccin",
     url = "https://github.com/catppuccin/nvim"
   },
-  ["close-buffers.nvim"] = {
-    loaded = true,
-    path = "/home/dt/.local/share/nvim/site/pack/packer/start/close-buffers.nvim",
-    url = "https://github.com/kazhala/close-buffers.nvim"
-  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/dt/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -215,6 +210,11 @@ _G.packer_plugins = {
     path = "/home/dt/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-smartbufs"] = {
+    loaded = true,
+    path = "/home/dt/.local/share/nvim/site/pack/packer/start/nvim-smartbufs",
+    url = "https://github.com/johann2357/nvim-smartbufs"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/home/dt/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
@@ -289,6 +289,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/dt/.local/share/nvim/site/pack/packer/start/vimwiki",
     url = "https://github.com/vimwiki/vimwiki"
+  },
+  ["virt-column.nvim"] = {
+    loaded = true,
+    path = "/home/dt/.local/share/nvim/site/pack/packer/start/virt-column.nvim",
+    url = "https://github.com/lukas-reineke/virt-column.nvim"
   }
 }
 

@@ -123,6 +123,7 @@ return packer.startup(function(use)
         -- Candy --
     use 'karb94/neoscroll.nvim'
     use "Pocco81/true-zen.nvim"
+    use {"lukas-reineke/virt-column.nvim", require('virt-column').setup{ char = "|"}}
    -- GIT --
     use {
       'lewis6991/gitsigns.nvim',

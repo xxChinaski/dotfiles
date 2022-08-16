@@ -3,13 +3,12 @@ local lualine = require('lualine')
 
 -- solarized
 local colors = {
-  --[[ bg       = '#002b36', ]]
-  bg       = '#00070c',
-  bgbright = '#586e75',
+  bg       = '#1d2021',
+  bgbright = '#a89984',
   --[[ bgbright = '#444444', ]]
   -- fg       = '#93a1a1',
-  fg       = '#839496',
-  fg2       =  '#eee8d5',
+  fg       = '#665c54',
+  fg2       =  '#ebdbb2',
   yellow   = '#b58900',
   cyan     = '#2aa198',
   darkblue = '#268bd2',
@@ -17,7 +16,7 @@ local colors = {
   orange   = '#cb4b16',
   violet   = '#6c71c4',
   magenta  = '#cba6f7',
-  blue     = '#2075c7',
+  blue     = '#f38019', -- orangeBright
   red      = '#dc322f',
   deepdark      = '#f38ba8',
   gitRed      = '#ff0000',
@@ -50,7 +49,7 @@ local config = {
       -- are just setting default looks o statusline
       -- normal = { c = { fg = colors.fg, bg = colors.bg } },
       normal = {
-        a = { fg = colors.fg2, bg = colors.blue },
+        a = { fg = colors.bg, bg = colors.blue, gui = 'bold' },
         b = { fg = colors.fg, bg = colors.bg },
         c = { fg = colors.fg, bg = colors.bg },
       },
@@ -124,7 +123,7 @@ ins_left {
   'filename',
   cond = conditions.buffer_not_empty,
   -- color = modeColor,
-  color = { fg = colors.fg2 , bg = colors.bgbright }, -- Sets highlighting of component
+  color = { fg = colors.bg , bg = colors.bgbright }, -- Sets highlighting of component
   path = 1,
 }
 
@@ -146,28 +145,10 @@ ins_left {
   padding = 0,
 }
 
---[[ ins_left { ]]
---[[   -- mode component ]]
---[[   function() ]]
---[[     return '' ]]
---[[   end, ]]
---[[   color = { fg = colors.bgbright}, ]]
---[[   padding = 0, ]]
---[[ } ]]
---[[]]
---[[ ins_left { ]]
---[[   -- mode component ]]
---[[   function() ]]
---[[     return '' ]]
---[[   end, ]]
---[[   color = { fg = colors.blue, bg = colors.bg}, ]]
---[[   padding = 0, ]]
---[[ } ]]
-
 ins_left {
   'branch',
   icon = '',
-  color = { fg = colors.fg2, bg = colors.blue, gui = 'bold' },
+  color = { fg = colors.bg, bg = colors.blue, gui = 'bold' },
 }
 
 ins_left {
