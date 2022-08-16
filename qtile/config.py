@@ -114,6 +114,7 @@ groups = [
         "3",
         # label='',
         layout='Bsp',
+        # matches=[Match(wm_class=["mpv"])],
     ),
     Group(
         "4",
@@ -148,14 +149,14 @@ groups = [
         "9",
         # label='',
         layout='Bsp',
-        matches=[Match(wm_class=["Figma"])],
+        matches=[
+            Match(wm_class=["firefox"]),
+            Match(wm_class=["Figma"])],
     ),
     Group(
         "0",
         # label='',
         layout='Stack',
-        matches=[
-            Match(wm_class=["firefox"])],
     ),
 ]
 
@@ -258,30 +259,14 @@ screens = [
         # top=bar.Gap(44),
         top=bar.Bar(
             [
-                # separator(),
-                # widget.Spacer(),
-                # widget.GroupBox(
-                #      hide_unused = True,
-                #      highlight_method = 'block',
-                #      center_aligned = True,
-                #      this_current_screen_border="#259185",
-                #      block_highlight_text_color = "#ffffff",
-                #      urgent_alert_method = 'text',
-                #      urgent_text = "#d01b24",
-                #      inactive = "#002731",
-                #      active = "#708183",
-                #      borderwidth=2,
-                #      fontsize = 14,
-                #      fontshadow = "#000000",
-                #      highlight_color = ['00000000', '2075c7'],
-                #      ),
+
                 widget.Spacer(),
-                widget.Clock(
-                    format="%a, %b %d %I:%M%p",
-                    foreground="#708183",
-                    padding=8,
-                     fontshadow = "#000000",
-                ),
+                # widget.Clock(
+                #     format="%a, %b %d %I:%M%p",
+                #     foreground="#708183",
+                #     padding=8,
+                #      fontshadow = "#000000",
+                # ),
                 separator(),
             ],
             20,
@@ -295,6 +280,7 @@ screens = [
                      highlight_method = 'block',
                      center_aligned = True,
                      this_current_screen_border="#259185",
+                     # this_current_screen_border="#002b36",
                      block_highlight_text_color = "#ffffff",
                      urgent_alert_method = 'text',
                      urgent_text = "#d01b24",
@@ -353,6 +339,12 @@ screens = [
                     padding=4,
                      fontshadow = "#000000",
                 ),
+                widget.Clock(
+                    format="%a, %b %d %I:%M%p",
+                    foreground="#708183",
+                    padding=8,
+                     fontshadow = "#000000",
+                ),
                 separator(),
             ],
             20,
@@ -378,7 +370,8 @@ screens = [
         right=bar.Gap(30),
         left=bar.Gap(30),
         # wallpaper='~/Pictures/cat/cat_nsch.png',
-        wallpaper='~/Downloads/wallpapers/wallpaper1.jpg',
+        # wallpaper='~/Downloads/wallpapers/wallpaper1.jpg',
+        wallpaper='~/Downloads/wallpapers/max-bender-8FdEwlxP3oU-unsplash.jpg',
         # wallpaper='~/Downloads/wallpapers/nsch.png',
         # wallpaper='~/Downloads/wallpapers/nsch2.png',
         wallpaper_mode='fill',
