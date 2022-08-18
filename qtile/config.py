@@ -114,7 +114,6 @@ groups = [
         "3",
         # label='',
         layout='Bsp',
-        # matches=[Match(wm_class=["mpv"])],
     ),
     Group(
         "4",
@@ -150,7 +149,6 @@ groups = [
         # label='',
         layout='Bsp',
         matches=[
-            Match(wm_class=["firefox"]),
             Match(wm_class=["Figma"])],
     ),
     Group(

@@ -67,8 +67,11 @@ return packer.startup(function(use)
         "catppuccin/nvim",
         as = "catppuccin"
     })
+    use "navarasu/onedark.nvim"
+    use 'Th3Whit3Wolf/onebuddy'
 
     use "ellisonleao/gruvbox.nvim"
+    use "luisiacc/gruvbox-baby"
     use 'folke/tokyonight.nvim'
     -- Status line
     use "nvim-lualine/lualine.nvim"
@@ -88,7 +91,10 @@ return packer.startup(function(use)
     use "neovim/nvim-lspconfig" --enable LSP
     use "williamboman/nvim-lsp-installer" -- simple to use language server isntaller
     use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
-    use 'glepnir/lspsaga.nvim' -- LSP UI
+    use {
+      'glepnir/lspsaga.nvim', -- LSP UI
+      branch = "main"
+    }
 
     use 'ThePrimeagen/harpoon'
     -- -- Telescope

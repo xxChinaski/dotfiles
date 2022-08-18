@@ -4,6 +4,7 @@ local lualine = require('lualine')
 -- solarized
 local colors = {
   bg       = '#1d2021',
+  bgSolar       = '#00070c', -- for tranparency with solar kitty bg
   bgbright = '#a89984',
   --[[ bgbright = '#444444', ]]
   -- fg       = '#93a1a1',
@@ -49,9 +50,9 @@ local config = {
       -- are just setting default looks o statusline
       -- normal = { c = { fg = colors.fg, bg = colors.bg } },
       normal = {
-        a = { fg = colors.bg, bg = colors.blue, gui = 'bold' },
-        b = { fg = colors.fg, bg = colors.bg },
-        c = { fg = colors.fg, bg = colors.bg },
+        a = { fg = colors.bgSolar, bg = colors.blue, gui = 'bold' },
+        b = { fg = colors.fg, bg = colors.bgSolar },
+        c = { fg = colors.fg, bg = colors.bgSolar },
       },
       inactive = {
         c = { fg = colors.fg, bg = colors.bg },

@@ -5,7 +5,7 @@ require "dt.barbar" -- Integrated into solarized theme config file
 require "dt.telescope"
 require "dt.cmp"
 require "dt.lsp"
-require "dt.lspsaga"
+--[[ require "dt.lspsaga" ]]
 require "dt.treesitter"
 require "dt.autopairs"
 require "dt.comment"
@@ -26,5 +26,6 @@ require "dt.lines.solarized"
 --[[ require "dt.lines.cat" ]]
 --[[ require "dt.themes.gruv" ]]
 --[[ require "dt.lines.gruvy" ]]
+--[[ require "dt.themes.baby" ]]
 --[[ require "dt.lines.gruv" ]]
 -------------------------------------------------------------------------------
