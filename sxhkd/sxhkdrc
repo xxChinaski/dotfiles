@@ -1,0 +1,143 @@
+# Restart sxhkd.
+super + ctrl + w 
+	pkill -USR1 -x sxhkd
+
+# Run / kill polybar.
+super + Home
+  ~/.config/polybar/launch.sh
+super + shift + Home
+  polybar-msg cmd quit
+
+# Open terminal.
+super + Return
+  kitty
+
+super + shift + x
+  ~/.config/i3/i3lockscript.sh
+
+Print
+  flameshot gui
+
+ctrl + Print
+  flameshot screen --clipboard
+
+shift + Print
+  flameshot screen --path ~/Pictures/Screenshots/
+# super + Print
+  # scrot "%Y-%m-%d_$wx$h.png" -e "optipng $f"
+############# ROFI CHORD ##############
+# Open application menu.
+ctrl + space;c
+  ~/.config/rofi/scripts/rofiedit.sh
+
+ctrl + space;r
+  rofi -show drun
+
+ctrl + space;q
+  ~/.config/rofi/scripts/powermenu.sh
+
+ctrl + space;s
+  ~/.config/rofi/scripts/search.sh
+
+# super + d;e
+#   ~/.config/rofi/scripts/rofiedit.sh
+#
+# super + d;r
+#   rofi -show drun
+#
+# super + d;q
+#   ~/.config/rofi/scripts/powermenu.sh
+############# ROFI CHORD END##############
+
+############# TERMINAL APPS ##############
+# Open application menu.
+super + f 
+  kitty -e vifm
+
+# Open application menu.
+super + shift + f 
+  pcmanfm 
+
+super + s;h 
+  kitty -e htop
+
+super + s;b 
+  kitty -e btm
+
+super + t;n
+  kitty -e ~/.config/rofi/scripts/tmux.sh
+
+######### MEDIA #########
+super + m; super + m 
+  kitty -e cmus
+
+# TODO:?????????????????
+# super + ctrl + p
+#   kitty -e cmus-remove --pause
+
+super + m;v
+  mpv --player-operation-mode=pseudo-gui --
+######### MEDIA END #########
+
+############# END OF TERMINAL APPS ##############
+# Open qutebrowser.
+super + BackSpace
+  qutebrowser
+
+# Open application menu.
+super + shift + BackSpace 
+  firefox
+
+# ######### BSPWM #########
+# # Kill the focused window.
+# super + {_,shift + }w
+# 	bspc node {-c,-k}
+#
+# # focus or send to the given desktop
+# super + {_,shift + }{1-9,0}
+# 	bspc {desktop -f,node -d} '^{1-9,10}'
+#
+# # focus the last node/desktop
+# alt + {grave,Tab}
+# 	bspc {node,desktop} -f last
+#
+# # alternate between the tiled and monocle layout
+# super + Tab
+#   ~/.config/bspwm/scripts/monocle.sh
+# # bspc desktop -l next
+# # set the window state
+# # super + {t,shift + t,s}
+# # 	bspc node -t {tiled,pseudo_tiled,floating}
+#
+# super + shift + Return
+#   bspc node -t floating
+#
+# # swap the current node and the biggest node
+# # super + g
+# # 	bspc node -s biggest
+#
+# # rotate a window
+# super + Up
+# 	bspc config window_gap @/ +5
+#
+# # rotate a window
+# super + e
+# 	bspc node @/ -R 90
+#
+# # focus the node in the given direction
+# super + {_,shift + }{h,j,k,l}
+# 	bspc node -{f,s} {west,south,north,east}
+#
+# # expand a window by moving one of its side outward
+# super + ctrl + {h,j,k,l}
+# 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+#
+# # # contract a window by moving one of its side inward
+# # super + ctrl + shift + {h,j,k,l}
+# # 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+#
+# # Quit/restart bspwm.
+# super + ctrl + {q,r}
+# 	bspc {quit,wm -r}
+#
+#EOF
