@@ -1,0 +1,2 @@
+picom - johnaburg
+qtile custom layouts dir - /usr/lib/python3.10/site-packages/libqtile/layout/
