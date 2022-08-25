@@ -1,0 +1,141 @@
+/*******************************************************************************
+ * MACOS SPOTLIGHT LIKE DARK THEME FOR ROFI 
+ * User                 : LR-Tech               
+ * Theme Repo           : https://github.com/lr-tech/rofi-themes-collection
+ *******************************************************************************/
+
+* {
+  /* font:   "Montserrat 11"; */
+    font:   "JetBrains Mono Nerd Font 8.5";
+
+    bg0:    #242424E6;
+    bg0:  rgba( 30, 30, 46, 0.75 );
+    bg01:  rgba(24, 24, 37, 0.85);
+    bg01:  #1e1e2e;
+    bg0:  rgba( 24, 24, 37, 0.85);
+    /* bg00:  rgba( 24, 24, 37, 1); */
+    bg00:  #11111b;
+    bg02:  rgba( 24, 24, 37, 0);
+    bg03:  rgba( 24, 24, 37, 0.6);
+    bg1:    #7E7E7E80;
+    bg2:    #0860f2E6;
+    bg2:    #e8a2af;
+    bg2:    #89b4fa;
+    bg2:    #f9e2af;
+
+    fg0:    #cdd6f4;
+    fg0:    #988ba2;
+    fg1:    #FFFFFF;
+    fg2:    #DEDEDE50;
+
+    background-color:   transparent;
+    text-color:         @fg0;
+
+    margin:     0;
+    padding:    0;
+    spacing:    0;
+}
+configuration {
+    show-icons: true;
+    icon-theme: "Crule";
+    terminal: "kitty";
+    drun-display-format: "{icon} {name}";
+    disable-history: false;
+    hide-scrollbar: true;
+    fullscreen: true;
+    display-drun: "   Apps   ";
+  }
+
+window {
+    /* background-color:   @bg03; */
+    background-color:   @bg00;
+    location:       north;
+    width:          100%;
+    border-radius:  2px;
+    //padding: 0 15%;
+    children: [ horibox ];
+}
+
+horibox {
+    orientation: horizontal;
+    children: [ prompt, entry, listview ];
+  }
+
+inputbar {
+    background-color: @bg00;
+    text-color: @fg0;
+    border-radius: 2px;
+    children:   [prompt,  entry ];
+}
+
+prompt {
+    text-color: @bg00;
+    padding: 0px 8px;
+    background-color: @bg2;
+  }
+
+icon-search {
+    expand:     false;
+    filename:   "search-symbolic";
+    size: 12px;
+}
+
+icon-search, prompt, entry, element-icon, element-text {
+    vertical-align: 0.5;
+}
+
+entry {
+    text-color: @bg2;
+    padding: 0px 16px;
+    height: 22px;
+    width: 10em;
+    expand: false;
+    placeholder         : "";
+    placeholder-color   : @bg2;
+}
+
+message {
+    border:             2px 0 0;
+    border-color:       @bg1;
+    background-color:   @bg1;
+}
+
+listview {
+    lines:      100;
+    layout: horizontal;
+    spacing: 20px;
+    fixed-height:   true;
+    height: 50%;
+    padding: 2px 5%;
+    border:          0 0;
+    border-color:   @bg2;
+}
+
+element {
+    padding:            0px 2px;
+    margin : 2px 0px;
+    spacing:            5px;
+    background-color:   transparent;
+    border-radius: 2px;
+}
+
+element normal active {
+    text-color: @bg2;
+    border-left: 2px;
+    border-color: red;
+}
+
+element selected normal, element selected active {
+    text-color:         @bg2;
+    border-color: @bg2;
+}
+
+
+element-icon {
+    size:   0.85em;
+}
+
+element-text {
+    text-color: inherit;
+}
+

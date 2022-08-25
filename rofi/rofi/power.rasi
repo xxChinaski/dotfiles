@@ -1,0 +1,41 @@
+@import "./spotlight.rasi"
+
+
+* {
+    bg2: #f38ba8;
+    font: "Montserrat 11";
+}
+window {
+    /* location: south; */
+  }
+
+horibox {
+    children: [ listview ];
+  }
+/* inputbar { */
+/*   enabled: false; */
+/* } */
+
+listview {
+  lines: 100;
+  layout: horizontal;
+  padding: 0px 0px 0px 20%;
+  /* padding-left: 15%; */
+}
+element {
+    margin: 0 5px;
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
+    text-align: center;
+    width: 20%;
+    expand: false;
+    padding: 2px;
+    spacing: 0px;
+    border-radius: 10px;
+  }
+
+element selected normal, element selected active {
+    text-color:         @bg2;
+    background-color: @bg01;
+    border-color: @bg2;
+}

@@ -1,0 +1,134 @@
+
+/*******************************************************************************
+ * MACOS SPOTLIGHT LIKE DARK THEME FOR ROFI 
+ * User                 : LR-Tech               
+ * Theme Repo           : https://github.com/lr-tech/rofi-themes-collection
+ *******************************************************************************/
+
+* {
+    font:   "JetBrains Mono Nerd Font 11";
+    font:   "Montserrat 11";
+
+    bg0:    #242424E6;
+    bg0:  rgba( 30, 30, 46, 0.75 );
+    bg01:  rgba(24, 24, 37, 0.85);
+    bg01:  #1e1e2e;
+    bg0:  rgba( 24, 24, 37, 0.85);
+    bg02:  rgba( 24, 24, 37, 0);
+    bg1:    #7E7E7E80;
+    bg2:    #0860f2E6;
+    bg2:    #e8a2af;
+    bg2:    #ffaff0;
+    bg2:    #89b4fa;
+
+    fg0:    #DEDEDE;
+    fg1:    #FFFFFF;
+    fg2:    #DEDEDE50;
+
+    background-color:   transparent;
+    text-color:         @fg0;
+
+    margin:     0;
+    padding:    0;
+    spacing:    0;
+}
+
+window {
+    //background-color:   @bg0;
+    background-color:   @bg02;
+
+    location:       center;
+    width:          640;
+    y-offset:       -25%;
+    border-radius:  2px;
+    // border: 1;
+    // border-color: @bg2;
+}
+
+inputbar {
+    font:       "Montserrat 11";
+    background-color: @bg0;
+    text-color: @fg0;
+    //padding:    8px 16px;
+    spacing:    6px;
+    margin: 2px 10px;
+    border-radius: 2px;
+    children:   [prompt,  entry ];
+    //enabled: false;
+}
+
+prompt {
+    text-color: @bg01;
+    padding: 4px 16px;
+    background-color: @bg2;
+  }
+
+icon-search {
+    expand:     false;
+    filename:   "search-symbolic";
+    size: 12px;
+}
+
+icon-search, prompt, entry, element-icon, element-text {
+    vertical-align: 0.5;
+}
+
+entry {
+    font:   inherit;
+    text-color: @bg2;
+    padding: 8px 16px;
+    placeholder         : "";
+    placeholder-color   : @bg2;
+}
+
+message {
+    border:             2px 0 0;
+    border-color:       @bg1;
+    background-color:   @bg1;
+}
+
+textbox {
+    padding:    4px 24px;
+}
+
+listview {
+    lines:      10;
+    columns:    1;
+
+    fixed-height:   false;
+    padding: 0 10px 10px;
+    border:          0 0;
+    border-color:   @bg2;
+}
+
+element {
+    padding:            8px 16px;
+    margin : 2px 0px;
+    spacing:            16px;
+    background-color:   @bg0;
+    border-radius: 2px;
+}
+
+element normal active {
+    text-color: @bg2;
+    border-left: 2px;
+    border-color: red;
+    background-color: @bg02;
+}
+
+element selected normal, element selected active {
+    text-color:         @bg2;
+    border: 0 5px 0 5px;
+    background-color: @bg01;
+    border-color: @bg2;
+}
+
+
+element-icon {
+    size:   0.85em;
+}
+
+element-text {
+    text-color: inherit;
+}
+
